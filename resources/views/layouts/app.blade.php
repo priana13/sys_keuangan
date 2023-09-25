@@ -28,7 +28,7 @@
 
                 <livewire:layout.sidebar />
                
-                <div class="p-4 sm:ml-64">
+                <div class="sm:ml-64">
 
                     <livewire:layout.navigation />
 
@@ -46,7 +46,7 @@
 
 
                     <!-- Page Content -->
-                    <main>
+                    <main class="p-4">
                         {{ $slot }}
                     </main>
 
