@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('kas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('type'); // Administrator, Manajer
-            $table->rememberToken();
+            
+            $table->enum('type', ["cash", "bank"])->default('cash'); // cash / bank
+            $table->string('nama');
+            $table->string("bank")->nullable();
+            $table->string('no_rek')->nullable();
+            $table->string('atas_nama')->nullable();
+            
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('kas');
     }
 };
