@@ -21,6 +21,8 @@ class ListPengeluaran extends Component
     public $kas_id;   
     public $kategori_id;
 
+    public $selected_record;
+
     public function mount(){
 
         $this->tanggal = date('Y-m-d');
