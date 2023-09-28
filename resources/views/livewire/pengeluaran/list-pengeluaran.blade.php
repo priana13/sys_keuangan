@@ -32,7 +32,7 @@
 
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-md border-1 border-gray-20 sm:rounded-lg p-4">
             
-            <livewire:admin.simple-table />
+            <livewire:pengeluaran.table-pengeluaran />
 
         </div>
     </div>

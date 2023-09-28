@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Pengeluaran;
 
+use App\Models\Kas;
+use App\Models\Kategori;
 use App\Models\Transaksi;
 use Livewire\Component;
 
@@ -10,19 +12,29 @@ class ListPengeluaran extends Component
     public $tanggal;
     public $type = "Pengeluaran";
     public $nominal;
-    public $kategory;
-    public $user_id;
+    public $kategory;   
     public $metode_bayar;
     public $keterangan;
-    public $kas_id;
-    public $metode_bayar_id;
+    public $kas_id;   
+    public $kategori_id;
+
+    public function mount(){
+
+        $this->tanggal = date('Y-m-d');
+
+    }
 
     public function render()
     {
-        return view('livewire.pengeluaran.list-pengeluaran');
+        $data['kas'] = Kas::all();
+        $data['kategori'] = Kategori::all();
+
+        return view('livewire.pengeluaran.list-pengeluaran', $data);
     }
 
     public function save(){
+
+        $metode_bayar = Kas::find($this->kas_id);
 
         Transaksi::create([
             'tanggal' => $this->tanggal,
@@ -32,7 +44,7 @@ class ListPengeluaran extends Component
             'kategori_id' => $this->kategori_id,
             'user_id' => auth()->user()->id,
             'kas_id' => $this->kas_id,
-            'metode_bayar' => $this->metode_bayar_id
+            'metode_bayar' => $metode_bayar->type
         ]);
     }
 }

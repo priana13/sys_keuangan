@@ -15,17 +15,45 @@
                     Tambah Pengeluaran
                   </h3>
                   <form class="space-y-6" action="#">
-                      <div>
+                      <div class="my-3">
                           <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal</label>
                           <input wire:model="tanggal" type="date" name="tanggal" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Keterangan" required>
                       </div>
 
-                      <div>
+                      <div class="my-3">
                         <label for="nominal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nominal</label>
-                        <input wire:model="nominal" type="text" name="nominal" id="nominal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Keterangan" required>
+                        <input wire:model="nominal" type="number" name="nominal" id="nominal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Keterangan" required>
                     </div>
 
-                    <div>
+                    <div class="my-3">
+                        <label for="kategori_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
+                        <select wire:model="kategori_id" id="kategori_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>Pilih Kategori</option>
+                            @foreach($kategori as $row)
+                            <option value="{{ $row->id }}">{{ $row->nama }}</option>
+                            @endforeach
+                           
+                        </select>
+
+                    </div>
+
+                    <div class="my-3">
+                        <label for="kas_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kas</label>
+                        <select wire:model="kas_id" id="kas_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option selected>Pilih Kas</option>
+                            @foreach($kas as $ks)
+
+                            <option value="{{ $ks->id }}">{{ $ks->nama }}</option>
+
+                            @endforeach
+                           
+                        </select>
+
+                    </div>
+                 
+
+
+                    <div class="my-3">
                         <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
                         <input wire:model="keterangan" type="text" name="keterangan" id="keterangan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Keterangan" required>
                     </div>
