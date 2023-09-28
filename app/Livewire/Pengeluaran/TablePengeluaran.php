@@ -14,7 +14,7 @@ class TablePengeluaran extends Component
 
     public function render()
     {
-        $transaksi = Transaksi::pengeluaran()->paginate(10);
+        $transaksi = Transaksi::pengeluaran()->latest()->paginate(10);
 
         return view('livewire.pengeluaran.table-pengeluaran', compact('transaksi'));
     }

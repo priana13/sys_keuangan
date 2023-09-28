@@ -6,9 +6,12 @@ use App\Models\Kas;
 use App\Models\Kategori;
 use App\Models\Transaksi;
 use Livewire\Component;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ListPengeluaran extends Component
 {
+    use LivewireAlert;
+
     public $tanggal;
     public $type = "Pengeluaran";
     public $nominal;
@@ -46,5 +49,7 @@ class ListPengeluaran extends Component
             'kas_id' => $this->kas_id,
             'metode_bayar' => $metode_bayar->type
         ]);
+
+        $this->alert('success', 'Data Berhasil Disimpan');
     }
 }
