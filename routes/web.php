@@ -10,12 +10,12 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('dashboard', Dashboard::class)->name('dashboard');
     Route::get('pengeluaran', \App\Livewire\Pengeluaran\ListPengeluaran::class)->name('pengeluaran'); 
     Route::get('pengeluaran/tambah', \App\Livewire\Pengeluaran\TambahPengeluaran::class)->name('pengeluaran.tambah'); 
-    Route::get('pengeluaran/{id}/edit', \App\Livewire\Pengeluaran\EditPengeluaran::class)->name('pengeluaran.edit'); 
+    Route::get('pengeluaran/{pengeluaran}/edit', \App\Livewire\Pengeluaran\EditPengeluaran::class)->name('pengeluaran.edit'); 
   
 
     Route::get('pemasukan', \App\Livewire\Pemasukan\ListPemasukan::class)->name('pemasukan');
     Route::get('pemasukan/tambah', \App\Livewire\Pemasukan\TambahPemasukan::class)->name('pemasukan.tambah'); 
-    Route::get('pemasukan/{id}/edit', \App\Livewire\Pemasukan\EditPemasukan::class)->name('pemasukan.edit'); 
+    Route::get('pemasukan/{pemasukan}/edit', \App\Livewire\Pemasukan\EditPemasukan::class)->name('pemasukan.edit'); 
 
 
     Route::get('nota-bon', \App\Livewire\NotaBon\ListNotaBon::class)->name('nota-bon');    

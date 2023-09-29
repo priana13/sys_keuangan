@@ -34,12 +34,12 @@ class Transaksi extends Model
         return $query->where('type', "Pemasukan");
     }
 
-    protected function tanggal(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => Date('d M Y', strtotime($value)),
-        );
-    }
+    // protected function tanggal(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn (string $value) => Date('d M Y', strtotime($value)),
+    //     );
+    // }
 
 
 
