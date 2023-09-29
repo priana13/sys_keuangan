@@ -17,7 +17,9 @@ class PajakFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "bulan" => rand(1,12),
+            "tahun" => rand(2018, 2023),
+            "jumlah" => rand(30000000,400000000)
         ];
     }
 }

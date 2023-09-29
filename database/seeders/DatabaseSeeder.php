@@ -25,5 +25,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\Kategori::factory(5)->create();
         \App\Models\Kas::factory(5)->create();
         \App\Models\Transaksi::factory(100)->create();
+        \App\Models\NotaBon::factory(10)->create();
+        \App\Models\Pajak::factory(30)->create();
+
+
     }
 }

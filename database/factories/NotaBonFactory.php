@@ -15,9 +15,13 @@ class NotaBonFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
+    {       
+
         return [
-            //
+            'tanggal' => fake()->date(),
+            'nama_suplier' => fake()->name(), 
+            'total' => rand(200000,500000),
+            'status' => fake()->randomElement(["Sudah Bayar", "Belum Bayar"])
         ];
     }
 }

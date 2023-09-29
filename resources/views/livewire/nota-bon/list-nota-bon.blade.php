@@ -1,7 +1,12 @@
 <div>
     {{-- In work, do what you enjoy. --}}
 
-    <livewire:admin.card-over-view />
+    <div class="border-b-2 border-gray-400 py-3">
+        <h2 class="text-4xl font-extrabold dark:text-white">Nota Bon</h2>
+    </div>            
+
+
+    <livewire:nota-bon.nota-bon-over-view />
 
     <div class="mb-3 flex justify-between mt-8">
 
@@ -44,7 +49,7 @@
         </div>
 
     </div>
-    
+
     
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -54,13 +59,13 @@
                         Tanggal
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Keterangan
+                        Nama Sulier
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Kategori
+                        Total
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Nominal
+                        Status
                     </th>
                     <th>Action</th>
                 </tr>
@@ -74,13 +79,13 @@
                         {{ $row->tanggal }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ $row->keterangan }}
+                        {{ $row->nama_suplier }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $row->kategori->nama }}
+                        {{ $row->total }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ number_format($row->nominal ,0,',','.') }}
+                        {{ $row->status }}
                     </td>
                     <td>
 
