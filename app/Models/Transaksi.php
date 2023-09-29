@@ -34,6 +34,16 @@ class Transaksi extends Model
         return $query->where('type', "Pemasukan");
     }
 
+    public function scopeHariIni($query){
+
+        return $query->where('tanggal', date('Y-m-d'));
+    }
+
+    public function scopeBulanIni($query){
+
+        return $query->whereYear('tanggal', date('Y'))->whereMonth('tanggal', date('m'));
+    }
+
     // protected function tanggal(): Attribute
     // {
     //     return Attribute::make(

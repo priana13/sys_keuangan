@@ -18,4 +18,14 @@ class Kategori extends Model
         return $this->hasMany(Transaksi::class, 'kategori_id');
     }
 
+    public function scopePengeluaran($query){
+
+        return $query->where('type', "Pengeluaran");
+    }
+
+    public function scopePemasukan($query){
+
+        return $query->where('type', "Pemasukan");
+    }
+
 }

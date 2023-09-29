@@ -6,7 +6,7 @@
         <div class="text-center">
             <span class="text-sm font-medium mb-2">Total Pemasukan / Hari</span>
             <h4 class="text-title-md font-bold dark:text-white">
-            Rp. {{ number_format(10000000 ,0,',', '.')  }}
+            Rp. {{ number_format($totalHariIni ,0,',', '.')  }}
             </h4>             
         </div>  
         
@@ -19,7 +19,7 @@
         <div class="text-center">
             <span class="text-sm font-medium mb-2">Total Pemasukan / Bulan</span>
             <h4 class="text-title-md font-bold dark:text-white">
-            Rp. {{ number_format(10000000 ,0,',', '.')  }}
+            Rp. {{ number_format($totalBulanIni ,0,',', '.')  }}
             </h4>             
         </div>          
         
@@ -31,7 +31,7 @@
         <div class="text-center">
             <span class="text-sm font-medium mb-2">Total Band / Bulan</span>
             <h4 class="text-title-md font-bold dark:text-white">
-            Rp. {{ number_format(10000000 ,0,',', '.')  }}
+            Rp. {{ number_format(100000 ,0,',', '.')  }}
             </h4>             
         </div>  
         
