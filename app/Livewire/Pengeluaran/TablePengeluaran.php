@@ -48,20 +48,4 @@ class TablePengeluaran extends Component
 
     }
 
-    #[Renderless] 
-    public function edit($id){
-
-        $this->record = Transaksi::find($id);      
-
-        $this->tanggal      = $this->record->tanggal;
-        $this->kategori_id  = $this->record->kategori_id;
-        $this->kas_id       = $this->record->kas_id;
-        $this->keterangan   = $this->record->keterangan;
-        $this->nominal      = $this->record->nominal;
-
-        // show modal edit
-        $this->dispatch('tampilkan-modal-edit'); 
-
-
-    }
 }

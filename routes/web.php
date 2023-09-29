@@ -14,6 +14,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
   
 
     Route::get('pemasukan', \App\Livewire\Pemasukan\ListPemasukan::class)->name('pemasukan');
+    Route::get('pemasukan/tambah', \App\Livewire\Pemasukan\TambahPemasukan::class)->name('pemasukan.tambah'); 
+    Route::get('pemasukan/{id}/edit', \App\Livewire\Pemasukan\EditPemasukan::class)->name('pemasukan.edit'); 
+
+
     Route::get('nota-bon', \App\Livewire\NotaBon\ListNotaBon::class)->name('nota-bon');    
     Route::get('laporan', \App\Livewire\Laporan\SemuaLaporan::class)->name('laporan');  
     Route::get('pajak', \App\Livewire\Pajak\ListPajak::class)->name('pajak');  
