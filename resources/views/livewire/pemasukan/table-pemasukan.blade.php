@@ -9,13 +9,16 @@
                         Tanggal
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Keterangan
+                        Cash
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Debit
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Kategori
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Nominal
+                        Total
                     </th>
                     <th>Action</th>
                 </tr>
@@ -29,13 +32,16 @@
                         {{ $row->tanggal }}
                     </th>
                     <td class="px-6 py-4">
-                        {{ $row->keterangan }}
+                        {{ $row->kas->nama }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ number_format($row->nominal ,0,',','.') }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $row->kategori->nama }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $row->nominal }}
+                        {{ number_format($row->nominal ,0,',','.') }}
                     </td>
                     <td>
 

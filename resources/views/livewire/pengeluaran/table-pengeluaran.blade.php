@@ -35,7 +35,7 @@
                         {{ $row->kategori->nama }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $row->nominal }}
+                        {{ number_format($row->nominal ,0,',','.') }}
                     </td>
                     <td>
 
