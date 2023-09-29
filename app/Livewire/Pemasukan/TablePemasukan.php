@@ -9,10 +9,21 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 class TablePemasukan extends Component
 {
     use LivewireAlert;
+
+    public $search;
     
     public function render()
-    {
-        $data['transaksi'] = Transaksi::pemasukan()->latest()->paginate(10);
+    {       
+
+        $transaksi = Transaksi::pemasukan()->latest();
+
+        if($this->search){          
+
+            $transaksi->where('keterangan', 'like' , '%' . $this->search . '%');
+        }
+
+        $data['transaksi'] = $transaksi->paginate(10);
+
 
         return view('livewire.pemasukan.table-pemasukan', $data);
     }

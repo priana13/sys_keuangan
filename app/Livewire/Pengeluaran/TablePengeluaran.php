@@ -2,12 +2,15 @@
 
 namespace App\Livewire\Pengeluaran;
 
+use App\Exports\ExportPengeluaran;
 use App\Models\Kas;
 use Livewire\Component;
 use App\Models\Kategori;
 use App\Models\Transaksi;
 use Livewire\WithPagination;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class TablePengeluaran extends Component
 {
@@ -27,9 +30,19 @@ class TablePengeluaran extends Component
 
     public $record;
 
+    public $search;
+
     public function render()
     {
-        $data['transaksi'] = Transaksi::pengeluaran()->latest()->paginate(10);
+
+        $transaksi = Transaksi::pengeluaran()->latest();
+
+        if($this->search){          
+
+            $transaksi->where('keterangan', 'like' , '%' . $this->search . '%');
+        }
+
+        $data['transaksi'] = $transaksi->paginate(10);
 
         $data['kas'] = Kas::all();
         $data['kategori'] = Kategori::all();
@@ -46,6 +59,11 @@ class TablePengeluaran extends Component
         $this->alert('success', "Data Berhasil Dihapus");
 
 
+    }
+
+    public function export(){
+
+        return Excel::download(new ExportPengeluaran(), 'pengeluaran.xlsx');
     }
 
 }

@@ -37,7 +37,7 @@ class Transaksi extends Model
     // protected function tanggal(): Attribute
     // {
     //     return Attribute::make(
-    //         get: fn (string $value) => Date('d M Y', strtotime($value)),
+    //         get: fn (string $value) => Date('d-m-Y', strtotime($value)),
     //     );
     // }
 
