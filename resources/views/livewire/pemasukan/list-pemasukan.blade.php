@@ -5,7 +5,7 @@
             <h2 class="text-4xl font-extrabold dark:text-white">Pemasukan</h2>
         </div>            
 
-        <livewire:admin.card-over-view />
+        <livewire:pemasukan.over-view-pemasukan />
 
         <livewire:pemasukan.table-pemasukan />
 

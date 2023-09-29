@@ -5,7 +5,7 @@
             <h2 class="text-4xl font-extrabold dark:text-white">Pengeluaran</h2>
         </div>            
 
-        <livewire:admin.card-over-view />
+        <livewire:pengeluaran.over-view-pengeluaran />
 
         <livewire:pengeluaran.table-pengeluaran />
 
