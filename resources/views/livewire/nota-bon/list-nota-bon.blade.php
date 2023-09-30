@@ -82,7 +82,7 @@
                         {{ $row->nama_suplier }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $row->total }}
+                        {{ rupiah($row->total) }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $row->status }}
