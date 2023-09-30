@@ -25,7 +25,7 @@
                 },
                 {
                   label: 'Pengeluaran',
-                  data: [20, 19, 3, 5, 2, 3],
+                  data: [20, 19, 3, 8, 2, 3],
                   borderWidth: 1
                 }
             ]

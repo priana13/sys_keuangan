@@ -28,9 +28,13 @@ class TablePengeluaran extends Component
     public $kas_id;   
     public $kategori_id;
 
-    public $record;
+    public $selected_id;
 
     public $search;
+
+    protected $listeners = [
+        'confirmed'
+    ];
 
     public function render()
     {
@@ -52,18 +56,36 @@ class TablePengeluaran extends Component
 
     public function delete($id){
 
-        $transaksi = Transaksi::find($id);
+        $this->selected_id = $id;  
 
-        $transaksi->delete();
+        $this->alert('warning', 'Yakin ingin dihapus?', [
+            'showConfirmButton' => true,
+            'confirmButtonText' => 'Hapus',
+            'showCancelButton' => true,
+            'confirmButtonColor' => '#ed4e73',
+            'cancelButtonText' => 'Cancel',
+            'toast' => false,
+            'position' => 'center',
+            'onConfirmed' => 'confirmed',
+            'timer' => null
+        ]); 
+
+    }
+
+    public function confirmed()
+    {
+        $record = Transaksi::findOrFail($this->selected_id);
+
+        $record->delete();
 
         $this->alert('success', "Data Berhasil Dihapus");
-
-
     }
 
     public function export(){
 
         return Excel::download(new ExportPengeluaran(), 'pengeluaran.xlsx');
     }
+
+
 
 }

@@ -11,6 +11,11 @@ class TablePemasukan extends Component
     use LivewireAlert;
 
     public $search;
+    public $selected_id;
+
+    protected $listeners = [
+        'confirmed'
+    ];
     
     public function render()
     {       
@@ -27,15 +32,33 @@ class TablePemasukan extends Component
 
         return view('livewire.pemasukan.table-pemasukan', $data);
     }
+   
 
     public function delete($id){
 
-        $transaksi = Transaksi::find($id);
+        $this->selected_id = $id;  
 
-        $transaksi->delete();
-
-        $this->alert('success', "Data Berhasil Dihapus");
-
+        $this->alert('warning', 'Yakin ingin dihapus?', [
+            'showConfirmButton' => true,
+            'confirmButtonText' => 'Hapus',
+            'showCancelButton' => true,
+            'confirmButtonColor' => '#ed4e73',
+            'cancelButtonText' => 'Cancel',
+            'toast' => false,
+            'position' => 'center',
+            'onConfirmed' => 'confirmed',
+            'timer' => null
+        ]); 
 
     }
+
+    public function confirmed()
+    {
+        $record = Transaksi::findOrFail($this->selected_id);
+
+        $record->delete();
+
+        $this->alert('success', "Data Berhasil Dihapus");
+    }
+
 }
