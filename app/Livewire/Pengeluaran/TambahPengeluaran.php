@@ -30,7 +30,7 @@ class TambahPengeluaran extends Component
     public function render()
     {
         $data['kas'] = Kas::all();
-        $data['kategori'] = Kategori::all();
+        $data['kategori'] = Kategori::pengeluaran()->get();
         
         return view('livewire.pengeluaran.tambah-pengeluaran',$data);
     }

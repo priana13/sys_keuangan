@@ -3,14 +3,27 @@
 namespace App\Livewire\Laporan;
 
 use App\Models\Kas;
+use App\Models\Kategori;
+use App\Models\Transaksi;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class ClosingToko extends Component
 {
+    use LivewireAlert;
+
     public $tanggal;
 
     public $list_bank;
     public $list_cash;
+
+    public array $data_bank = [];
+
+    public array $data_cash = [];
+
+    public $komisi_supir;
+
+    public $band;
 
     public function mount(){
 
@@ -28,10 +41,98 @@ class ClosingToko extends Component
 
     public function save(){
 
-        // input ke pemasukan 
+        $status_input = false;
 
+        // input ke pemasukan bank
+        if( count($this->data_bank) > 0 ){
+
+            foreach ($this->data_bank as $key => $value) {
+
+               Transaksi::create([
+                'tanggal' => $this->tanggal,
+                'type' => "Pemasukan",
+                'nominal' => $value,
+                'keterangan' => 'Closing Toko',
+                'kategori_id' => 1,
+                'user_id' => auth()->user()->id,
+                'kas_id' => $key,
+                'metode_bayar' => 'bank'
+               ]);
+            }
+
+            $status_input = true;
+        }
+
+        // input ke pemasukan cash
+        if( count($this->data_cash) > 0 ){
+
+            foreach ($this->data_cash as $key => $value) {
+
+                Transaksi::create([
+                 'tanggal' => $this->tanggal,
+                 'type' => "Pemasukan",
+                 'nominal' => $value,
+                 'keterangan' => 'Closing Toko',
+                 'kategori_id' => 1,
+                 'user_id' => auth()->user()->id,
+                 'kas_id' => $key,
+                 'metode_bayar' => 'cash'
+                ]);
+             }
+
+             $status_input = true;
+
+        }
 
         // input ke pengeluaran
+        if($this->komisi_supir){
+
+            $supir = Kategori::where('nama', "Komisi Supir")->first();
+            $cash = Kas::where('type', "Cash")->first();
+
+            Transaksi::create([
+                'tanggal' => $this->tanggal,
+                'type' => "Pengeluaran",
+                'nominal' => $this->komisi_supir,
+                'keterangan' => 'Closing Toko',
+                'kategori_id' => $supir->id,
+                'user_id' => auth()->user()->id,
+                'kas_id' => $cash->id,
+                'metode_bayar' => 'cash'
+               ]);
+
+            $status_input = true;
+        }
+
+        if($this->band){
+
+            $band = Kategori::where('nama', "Band")->first();
+            $cash = Kas::where('type', "Cash")->first();
+
+            Transaksi::create([
+                'tanggal' => $this->tanggal,
+                'type' => "Pengeluaran",
+                'nominal' => $this->band,
+                'keterangan' => 'Closing Toko',
+                'kategori_id' => $band->id,
+                'user_id' => auth()->user()->id,
+                'kas_id' => $cash->id,
+                'metode_bayar' => 'cash'
+               ]);
+
+            $status_input = true;
+
+        }
+        
+
+        if($status_input){
+
+            $this->reset();
+
+            $this->alert('success', "Laporan Berhasil Terkirim");
+        }       
+
 
     }
+ 
 }

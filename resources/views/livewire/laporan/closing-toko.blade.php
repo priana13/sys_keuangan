@@ -19,7 +19,7 @@
         
                 <div class="my-3 grid grid-cols-4 gap-2"">
                   <label for="nominal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white my-auto">Penjulan {{ $cash->nama }}</label>
-                  <input wire:model="nominal" type="number" name="nominal" id="nominal" class="col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nominal">
+                  <input wire:model="data_cash.{{ $cash->id }}"  wire:key="kas{{ $cash->id }}" type="number" name="nominal" id="nominal" class="col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nominal">
                   @error('nominal') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div
                 >  
@@ -29,7 +29,7 @@
 
                 <div class="my-3 grid grid-cols-4 gap-2">
                     <label for="nominal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white my-auto">{{ $bank->nama }}</label>
-                    <input wire:model="nominal" type="number" name="nominal" id="nominal" class="col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nominal">
+                    <input wire:model="data_bank.{{ $bank->id }}" type="number" name="nominal" id="nominal" class="col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nominal">
                     @error('nominal') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>   
 
@@ -38,15 +38,15 @@
                 <br>
 
                 <div class="grid grid-cols-4 gap-2 mt-5">
-                    <label for="nominal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white my-auto">Komisi Super</label>
-                    <input wire:model="nominal" type="number" name="nominal" id="nominal" class="col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nominal">
-                    @error('nominal') <span class="text-red-500">{{ $message }}</span> @enderror
+                    <label for="komisi_supir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white my-auto">Komisi Supir</label>
+                    <input wire:model="komisi_supir" type="number" name="komisi_supir" id="komisi_supir" class="col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Komisi Supir">
+                    @error('komisi_supir') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>   
 
                 <div class="grid grid-cols-4 gap-2">
-                    <label for="nominal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white my-auto">Band</label>
-                    <input wire:model="nominal" type="number" name="nominal" id="nominal" class="col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nominal">
-                    @error('nominal') <span class="text-red-500">{{ $message }}</span> @enderror
+                    <label for="band" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white my-auto">Band</label>
+                    <input wire:model="band" type="number" name="band" id="band" class="col-span-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Band">
+                    @error('band') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>          
         
              
