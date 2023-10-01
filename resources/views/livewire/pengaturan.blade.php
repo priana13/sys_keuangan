@@ -1,3 +1,12 @@
-<div>
-    {{-- Be like water. --}}
+<div class="pb-4">
+    <div class="max-w-full">
+
+        <div class="border-b-2 border-gray-400 py-3">
+            <h2 class="text-4xl font-extrabold dark:text-white">Pengaturan</h2>
+        </div>       
+        
+        
+
+
+    </div>
 </div>

@@ -12,4 +12,14 @@ class Kas extends Model
     protected $table = "kas";
 
     protected $guarded = [];
+
+    public function scopeBank($query){
+
+        return $query->where('type', 'bank');
+    }
+
+    public function scopeCash($query){
+
+        return $query->where('type', 'cash');
+    }
 }

@@ -26,7 +26,7 @@ class ListPajak extends Component
     
     public function render()
     {
-        $data['list_pajak'] = Pajak::latest()->paginate(10);
+        $data['list_pajak'] = Pajak::latest()->paginate(12);
 
         $this->pajak_bulan = Pajak::bulanIni()->sum('jumlah');
         $this->pajak_tahun = Pajak::tahunIni()->sum('jumlah');
