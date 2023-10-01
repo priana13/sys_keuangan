@@ -6,7 +6,7 @@
         <div class="text-center">
             <span class="text-sm font-medium mb-2">Total Belum Bayar</span>
             <h4 class="text-title-md font-bold dark:text-white">
-            Rp. 3.456K
+            {{ rupiah($belum_bayar) }}
             </h4>              
         </div>
           
@@ -18,7 +18,7 @@
         <div class="text-center">
             <span class="text-sm font-medium mb-2">Total Sudah Bayar</span>
             <h4 class="text-title-md font-bold dark:text-white">
-                Rp. 3.456K
+               {{ rupiah($sudah_bayar) }}
             </h4>              
         </div>        
        

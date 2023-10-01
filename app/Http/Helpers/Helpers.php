@@ -19,3 +19,9 @@ function rupiah(int $number , int | null $belakang_koma = 0 , ){
     return "Rp. " . number_format($number, $belakang_koma, ',', '.');
 
 }
+
+function tgl($tanggal){
+
+    return date('d M Y', strtotime($tanggal));
+
+}
