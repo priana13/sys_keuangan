@@ -13,4 +13,14 @@ class Pajak extends Model
 
     protected $guarded = [];
 
+    public function scopeTahunIni($query){
+
+        return $query->where('tahun', date('Y'));
+    }
+
+    public function scopeBulanIni($query){
+
+        return $query->where('bulan', date('m'))->tahunIni();
+    }
+
 }

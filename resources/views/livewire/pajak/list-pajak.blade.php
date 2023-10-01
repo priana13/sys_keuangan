@@ -5,16 +5,44 @@
         <h2 class="text-4xl font-extrabold dark:text-white">Pajak</h2>
     </div>            
    
+    {{-- awal over view pajak --}}
 
-    <livewire:nota-bon.nota-bon-over-view />
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 my-4">
+        <!-- Card Item Start -->
+        <div class="rounded-md border border-stroke bg-gray-800 text-white py-3 px-3 shadow-sm dark:border-strokedark dark:bg-boxdark">           
+           
+            <div class="text-center">
+                <span class="text-sm font-medium mb-2">Total Pajak / Bulan</span>
+                <h4 class="text-title-md font-bold dark:text-white">
+                {{ rupiah($pajak_bulan) }}
+                </h4>              
+            </div>              
+            
+        </div>
+    
+        <div class="rounded-md border border-stroke bg-gray-800 text-white py-2 px-3 shadow-sm dark:border-strokedark dark:bg-boxdark">    
+           
+            <div class="text-center">
+                <span class="text-sm font-medium mb-2">Total Pajak / Tahun</span>
+                <h4 class="text-title-md font-bold dark:text-white">
+                   {{ rupiah($pajak_tahun) }}
+                </h4>              
+            </div>        
+           
+        </div>        
+    
+    </div>
+    {{-- akhir pajak over view --}}
+
 
     <div class="mb-3 flex justify-between mt-8 w-1/2">
 
         <div>
-             <a href="{{ route('pengeluaran.tambah') }}" wire:navigate class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                                
+             <button  type="button" class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+             data-drawer-target="tambah-pajak" data-drawer-show="tambah-pajak" data-drawer-placement="right" aria-controls="tambah-pajak"
+             >                                
                 Tambah
-             </a>
+             </button>
 
         </div>
        
@@ -68,13 +96,13 @@
 
                @forelse($list_pajak as $row)
                
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 {{ ($row->id == $selected_id)?'bg-gray-200':'' }}">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $row->bulan }} - {{ $row->tahun }}
                     </th>               
                    
                     <td class="px-6 py-4">
-                        {{ number_format( $row->jumlah,0, ',', '.')  }}
+                        {{ rupiah($row->jumlah)  }}
                     </td>
                     <td>
 
@@ -115,7 +143,7 @@
     </div>
 
     
-    {{-- @include('livewire.pengeluaran.modal-edit-pengeluaran') --}}
+    @include('livewire.pajak.tambah-pajak')
 
     @push('scripts')   
     <script>
