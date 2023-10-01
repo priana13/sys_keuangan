@@ -26,7 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
         
     Route::get('laporan', \App\Livewire\Laporan\SemuaLaporan::class)->name('laporan');  
     Route::get('pajak', \App\Livewire\Pajak\ListPajak::class)->name('pajak');  
-    Route::get('pengaturan', \App\Livewire\Pengaturan::class)->name('pengaturan');   
+    Route::get('pengaturan', \App\Livewire\Pengaturan\HalamanPengaturan::class)->name('pengaturan');   
     Route::get('closing-toko', \App\Livewire\Laporan\ClosingToko::class)->name('closing-toko');    
  
    
