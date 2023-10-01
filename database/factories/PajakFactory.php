@@ -16,8 +16,9 @@ class PajakFactory extends Factory
      */
     public function definition(): array
     {
+        $bulan = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
         return [
-            "bulan" => rand(1,12),
+            "bulan" => $bulan[rand(0,11)],
             "tahun" => rand(2018, 2023),
             "jumlah" => rand(30000000,400000000)
         ];

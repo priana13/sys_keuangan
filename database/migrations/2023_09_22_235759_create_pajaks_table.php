@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('pajak', function (Blueprint $table) {
             $table->id();
-            $table->integer('bulan');
-            $table->integer('tahun');
+            $table->string('bulan');
+            $table->string('tahun');
             $table->integer('jumlah');
             $table->timestamps();
         });

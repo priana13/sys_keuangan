@@ -16,6 +16,10 @@ class ListPajak extends Component
     public $jumlah;
     public $bulan;
 
+    public $form_title = "Input Pajak";
+    public $form_type = "input";
+    public $form_action = "Tambah Data";
+
     protected $listeners = [
         'confirmed'
     ];
@@ -28,6 +32,30 @@ class ListPajak extends Component
         $this->pajak_tahun = Pajak::tahunIni()->sum('jumlah');
 
         return view('livewire.pajak.list-pajak', $data);
+    }
+
+    public function input(){
+
+        $this->form_title = "Input Data Pajak";
+        $this->form_type = "input";
+        $this->form_action = "Tambah";
+        $this->selected_id = '';
+    }
+
+    public function edit($id){
+
+        $this->form_title = "Ubah Data Pajak";
+        $this->form_type = "edit";
+        $this->form_action = "Ubah Data";
+
+        $this->selected_id = $id;
+
+        $record = Pajak::find($id);
+
+        $this->jumlah = $record->jumlah;
+        $this->bulan = $record->tahun . "-" . $record->bulan;
+
+        $this->dispatch('edit-pajak'); 
     }
 
 
@@ -62,16 +90,29 @@ class ListPajak extends Component
 
         $this->validate([
             'jumlah' => 'required',
-        ]);
+        ]);     
 
         $bulan = date('m', strtotime($this->bulan));
         $tahun = date('Y', strtotime($this->bulan));
 
-        Pajak::create([
-            'bulan' => $bulan,
-            'tahun' => $tahun,
-            'jumlah' => $this->jumlah
-        ]);
+        if($this->form_type == 'input'){
+
+            Pajak::create([
+                'bulan' => $bulan,
+                'tahun' => $tahun,
+                'jumlah' => $this->jumlah
+            ]);
+
+        }else{
+
+            $record = Pajak::find($this->selected_id);
+            $record->bulan = $bulan;
+            $record->tahun = $tahun;
+            $record->jumlah = $this->jumlah;
+            $record->save();
+
+        }
+
 
         $this->alert('success', "Data Berhasil Disimpan");
     }
