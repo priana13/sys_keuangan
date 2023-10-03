@@ -7,32 +7,30 @@
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <tbody> 
                     
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700 ">
-                        <th scope="row" class=""> Sponsor </th>
+                    <tr class="dark:bg-gray-800 dark:border-gray-700 ">
+                        <th scope="row" class="py-1"> Sponsor </th>
                         <td scope="row"> 20.000.000</td>
                     </tr>
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700 ">
-                        <th scope="row" class=""> Pemasukan Lain </th>
+                    <tr class="dark:bg-gray-800 dark:border-gray-700 ">
+                        <th scope="row" class="py-1"> Pemasukan Lain </th>
                         <td scope="row"> 20.000.000</td>
                     </tr>
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700 ">
-                        <th scope="row" class=""> Pajak </th>
+                    <tr class="dark:bg-gray-800 dark:border-gray-700 ">
+                        <th scope="row" class="py-1"> Pajak </th>
                         <td scope="row"> 20.000.000</td>
-                    </tr>
-                    
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700"> 
-                        <th scope="row" class=""> Laba Rugi Bersih </th>
-                        <td scope="row"> 20.000.000</td>
-                    </tr>
+                    </tr>               
     
                 </tbody>
             </table>
         </div>
 
-        {{-- Paginate --}}
-        <div class="my-3 ">
-            
-        </div>
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-3"> 
+            <tr class="dark:bg-gray-800 dark:border-gray-700"> 
+                <th scope="row" class="py-1"> Laba Rugi Bersih </th>
+                <th scope="row"> 20.000.000</th>
+            </tr>
+        </table>
+
 
     </div>
     {{-- end table --}}

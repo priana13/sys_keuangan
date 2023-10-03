@@ -5,30 +5,25 @@
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <tbody> 
                     
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700"> 
-                        <th scope="row" class=""> Total pemasukan </th>
-                        <td scope="row"> 20.000.000</td>
+                    <tr class="dark:bg-gray-800 dark:border-gray-700"> 
+                        <th scope="row" class="py-1"> Total pemasukan </th>
+                        <td scope="row"> {{ rupiah($total_pemasukan) }}</td>
                     </tr>
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700"> 
-                        <th scope="row" class=""> Operasional </th>
-                        <td scope="row"> 20.000.000</td>
+                    <tr class="dark:bg-gray-800 dark:border-gray-700"> 
+                        <th scope="row" class="py-1"> Operasional </th>
+                        <td scope="row"> {{ rupiah($operasional) }}</td>
                     </tr>
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700"> 
-                        <th scope="row" class=""> Bahan Baku </th>
-                        <td scope="row"> 20.000.000</td>
+                    <tr class="dark:bg-gray-800 dark:border-gray-700"> 
+                        <th scope="row" class="py-1"> Bahan Baku </th>
+                        <td scope="row"> {{ rupiah($bahan_baku) }}</td>
                     </tr>
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700"> 
-                        <th scope="row" class=""> Asset </th>
-                        <td scope="row"> 20.000.000</td>
+                    <tr class="dark:bg-gray-800 dark:border-gray-700"> 
+                        <th scope="row" class="py-1"> Asset </th>
+                        <td scope="row"> {{ rupiah($asset) }}</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td></td>
-                    </tr>
-
-                    <tr class="border-b dark:bg-gray-800 dark:border-gray-700"> 
-                        <th scope="row" class=""> Laba Rugi Kotor </th>
-                        <td scope="row"> 20.000.000</td>
                     </tr>
                     
     
@@ -36,10 +31,14 @@
             </table>
         </div>
 
-        {{-- Paginate --}}
-        <div class="my-3 ">
-            
-        </div>
+
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-3"> 
+            <tr class="dark:bg-gray-800 dark:border-gray-700"> 
+                <th scope="row" class="py-1"> Laba Rugi Kotor </th>
+                <th scope="row"> {{ rupiah($total_pemasukan - $operasional - $bahan_baku - $asset) }}</th>
+            </tr>
+        </table>
+       
 
     </div>
     {{-- end table --}}

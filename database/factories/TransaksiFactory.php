@@ -28,13 +28,20 @@ class TransaksiFactory extends Factory
         // $table->unsignedBigInteger('kas_id');
         // $table->enum('metode_bayar', ['cash', 'bank']); // cash, bank
 
-        $kategori = Kategori::find(rand(1,5));
+        $kategori = Kategori::find(rand(1,7));
         $kas = Kas::find(rand(1,5));
+
+        if($kategori->type == 'Pengeluaran'){
+
+            $nominal = rand(10000, 40000);
+
+        }else $nominal = rand(100000, 400000);
+        
                 
         return [
             'tanggal' => fake()->date(),
             'type' => $kategori->type,
-            'nominal' => rand(10000,3000000),
+            'nominal' => $nominal,
             'keterangan' => fake()->text(10),
             'kategori_id' => $kategori->id,
             'user_id' => 1,
