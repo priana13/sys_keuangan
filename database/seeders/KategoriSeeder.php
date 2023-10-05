@@ -24,7 +24,7 @@ class KategoriSeeder extends Seeder
         }
 
         // Kategori Pemasukan
-        foreach(["Penjualan","Investasi"] as $row){
+        foreach(["Penjualan","Sponsor" , "Pemasukan Lain"] as $row){
 
             Kategori::create([
                 "nama" => $row,

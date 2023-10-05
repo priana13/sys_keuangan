@@ -20,7 +20,7 @@ class PajakFactory extends Factory
         return [
             "bulan" => $bulan[rand(0,11)],
             "tahun" => rand(2018, 2023),
-            "jumlah" => rand(30000000,400000000)
+            "jumlah" => rand(100000,750000)
         ];
     }
 }

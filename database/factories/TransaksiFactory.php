@@ -19,16 +19,7 @@ class TransaksiFactory extends Factory
     public function definition(): array
     {
 
-        // $table->date('tanggal');
-        // $table->string('type');
-        // $table->integer('nominal');
-        // $table->string('kegerangan');
-        // $table->unsignedBigInteger('kategori_id');
-        // $table->unsignedBigInteger('user_id');
-        // $table->unsignedBigInteger('kas_id');
-        // $table->enum('metode_bayar', ['cash', 'bank']); // cash, bank
-
-        $kategori = Kategori::find(rand(1,7));
+        $kategori = Kategori::find(rand(1,8));
         $kas = Kas::find(rand(1,5));
 
         if($kategori->type == 'Pengeluaran'){

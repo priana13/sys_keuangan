@@ -22,13 +22,14 @@ class DatabaseSeeder extends Seeder
             'type' => 'Administrator'
         ]);
 
+        \App\Models\Kas::factory(5)->create();
         // \App\Models\Kategori::factory(5)->create();
         $this->call([
             KategoriSeeder::class,
-        ]);
+            TransaksiSeeder::class,
+        ]);        
         
-        \App\Models\Kas::factory(5)->create();
-        \App\Models\Transaksi::factory(1000)->create();
+        // \App\Models\Transaksi::factory(100)->create();
         \App\Models\NotaBon::factory(10)->create();
         \App\Models\Pajak::factory(30)->create();
 

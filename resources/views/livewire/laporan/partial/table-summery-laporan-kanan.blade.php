@@ -9,15 +9,15 @@
                     
                     <tr class="dark:bg-gray-800 dark:border-gray-700 ">
                         <th scope="row" class="py-1"> Sponsor </th>
-                        <td scope="row"> 20.000.000</td>
+                        <td scope="row"> {{ rupiah($sponsor) }}</td>
                     </tr>
                     <tr class="dark:bg-gray-800 dark:border-gray-700 ">
                         <th scope="row" class="py-1"> Pemasukan Lain </th>
-                        <td scope="row"> 20.000.000</td>
+                        <td scope="row"> {{ rupiah($pemasukan_lain) }}</td>
                     </tr>
                     <tr class="dark:bg-gray-800 dark:border-gray-700 ">
                         <th scope="row" class="py-1"> Pajak </th>
-                        <td scope="row"> 20.000.000</td>
+                        <td scope="row"> {{ rupiah($pajak) }}</td>
                     </tr>               
     
                 </tbody>
@@ -27,7 +27,7 @@
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-3"> 
             <tr class="dark:bg-gray-800 dark:border-gray-700"> 
                 <th scope="row" class="py-1"> Laba Rugi Bersih </th>
-                <th scope="row"> 20.000.000</th>
+                <th scope="row"> {{ rupiah($laba_bersih) }}</th>
             </tr>
         </table>
 

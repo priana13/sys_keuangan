@@ -62,27 +62,38 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $data_keluar = 0; ?>
 
                 @foreach($list_bulan as $bulan)
-
+              
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $bulan }}
                     </th>
                     <td class="px-6 py-4">
-                       {{ (isset($pemasukan[$bulan]))?$pemasukan[$bulan]:0  }}
+                       {{ (isset($pemasukan[ intval($bulan)  ]))? rupiah($pemasukan[ intval($bulan)]):0  }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ (isset($pengeluaran[$bulan]))?$pengeluaran[$bulan]:0  }}
+                        {{ (isset($pengeluaran_bahan_baku[intval($bulan)]))? rupiah($pengeluaran_bahan_baku[intval($bulan)]):0  }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ (isset($pengeluaran[$bulan]))?$pengeluaran[$bulan]:0  }}
+                        {{ (isset($pengeluaran_operasional[intval($bulan)]))?rupiah($pengeluaran_operasional[intval($bulan)]):0  }}
                     </td>
                     <td class="px-6 py-4">                       
-                        {{ (isset($pengeluaran[$bulan]))?$pengeluaran[$bulan]:0  }}
+                        {{ (isset($pengeluaran_asset[intval($bulan)]))?rupiah($pengeluaran_asset[intval($bulan)]):0  }}
                     </td>
                     <td class="px-6 py-4">
-                        20000
+                        <?php                        
+
+                                               
+
+                        ?>
+
+                        {{  (isset($pemasukan[ intval($bulan)  ]))?$pemasukan[ intval($bulan)]:0 - 
+                            $pengeluaran_bahan_baku[intval($bulan)] - 
+                            $pengeluaran_operasional[intval($bulan)]
+                           
+                        }}
                     </td>
                 </tr>          
                 
