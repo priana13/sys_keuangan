@@ -15,6 +15,7 @@ class SemuaLaporan extends Component
 
     public $laba_bersih;
 
+    public $laba_rugi;
 
     public function mount(){
 

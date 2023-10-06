@@ -82,19 +82,17 @@
                     <td class="px-6 py-4">                       
                         {{ (isset($pengeluaran_asset[intval($bulan)]))?rupiah($pengeluaran_asset[intval($bulan)]):0  }}
                     </td>
-                    <td class="px-6 py-4">
-                        <?php                        
+                    <th class="px-6 py-4">
 
-                                               
+                       @livewire('laporan.partial.kolom-laba-rugi', [
+                            "pemasukan" => (isset($pemasukan[intval($bulan)]))? $pemasukan[intval($bulan)]:0, 
+                            "bahan_baku" => (isset($pengeluaran_bahan_baku[intval($bulan)]))? $pengeluaran_bahan_baku[intval($bulan)]:0,
+                            "operasional" => (isset($pengeluaran_operasional[intval($bulan)]))?$pengeluaran_operasional[intval($bulan)]:0,
+                            "asset" => (isset($pengeluaran_asset[intval($bulan)]))?$pengeluaran_asset[intval($bulan)]:0
 
-                        ?>
+                       ])
 
-                        {{  (isset($pemasukan[ intval($bulan)  ]))?$pemasukan[ intval($bulan)]:0 - 
-                            $pengeluaran_bahan_baku[intval($bulan)] - 
-                            $pengeluaran_operasional[intval($bulan)]
-                           
-                        }}
-                    </td>
+                    </th>
                 </tr>          
                 
                 @endforeach
