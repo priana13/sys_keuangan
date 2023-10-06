@@ -7,7 +7,7 @@
           <div>
               <span class="text-sm font-medium mb-2">Total Pemasukan/Hari</span>
               <h4 class="text-title-md font-bold text-black dark:text-white">
-                Rp. 3.456K
+                {{ rupiah($pemasukan_hari_ini) }}
               </h4>              
           </div>
           
@@ -19,9 +19,9 @@
     
         <div class="mt-4 flex items-end justify-between">
         <div>
-            <span class="text-sm font-medium mb-2">Total Pemasukan/Hari</span>
+            <span class="text-sm font-medium mb-2">Total Pengeluaran/Hari</span>
             <h4 class="text-title-md font-bold text-black dark:text-white">
-                Rp. 3.456K
+                {{ rupiah($pengeluaran_hari_ini) }}
             </h4>              
         </div>
         
@@ -34,9 +34,9 @@
 
         <div class="mt-4 flex items-end justify-between">
         <div>
-            <span class="text-sm font-medium mb-2">Total Pemasukan/Hari</span>
+            <span class="text-sm font-medium mb-2">Total Pemasukan/Bulan</span>
             <h4 class="text-title-md font-bold text-black dark:text-white">
-                Rp. 3.456K
+                {{rupiah($pemasukan_bulan_ini)}}
             </h4>              
         </div>
         
@@ -48,9 +48,9 @@
 
             <div class="mt-4 flex items-end justify-between">
             <div>
-                <span class="text-sm font-medium mb-2">Total Pemasukan/Hari</span>
+                <span class="text-sm font-medium mb-2">Total Pengeluaran/Bulan</span>
                 <h4 class="text-title-md font-bold text-black dark:text-white">
-                    Rp. 3.456K
+                   {{rupiah($pengeluaran_bulan_ini)}}
                 </h4>              
             </div>
             
