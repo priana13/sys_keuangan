@@ -13,4 +13,39 @@ class Setting extends Model
 
     protected $guarded = [];
 
+    public static function getData($name){
+
+        $setting = Setting::where('name' , $name)->first();
+
+        if(!$setting){
+
+            $setting = self::create([
+                'name' => $name,
+                'value' => ''
+            ]);
+        }
+
+        return $setting;
+    }
+
+    public static function setData(string $name , string | int | null $value){
+       
+
+        $setting = Setting::where('name' , $name)->first();
+
+        if(!$setting){
+
+            $setting = self::create([
+                'name' => $name,
+                'value' => $value
+            ]);
+        }else{
+
+            $setting->value = $value;
+            $setting->save();
+        }
+
+        return $setting;
+    }
+    
 }
