@@ -10,6 +10,7 @@
         </div>
 
         <!-- Grafik Start -->
+      
 
         <script>
             const chartSaya = document.getElementById('myChart');
@@ -17,15 +18,15 @@
             new Chart(chartSaya, {
               type: 'bar',
               data: {
-                labels: ['Jan 23', 'Feb 23', 'Mar 23', 'April 23', 'Mei 23', 'Juni 23'],
+                labels: {!! json_encode($bulan) !!},
                 datasets: [{
                   label: 'Pemasukan',
-                  data: [12, 19, 3, 5, 2, 3],
+                  data: {!! json_encode($pemasukan) !!},
                   borderWidth: 1
                 },
                 {
                   label: 'Pengeluaran',
-                  data: [20, 19, 3, 8, 2, 3],
+                  data: {!! json_encode($pengeluaran) !!},
                   borderWidth: 1
                 }
             ]

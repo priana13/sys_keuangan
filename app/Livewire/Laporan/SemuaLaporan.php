@@ -16,6 +16,7 @@ class SemuaLaporan extends Component
     public $laba_bersih;
 
     public $laba_rugi;
+    public $list_bulan;
 
     public function mount(){
 
@@ -26,7 +27,7 @@ class SemuaLaporan extends Component
     public function render()
     {      
 
-        $data['list_bulan'] = $this->generateMonthList($this->start,$this->end);
+        $this->list_bulan = $this->generateMonthList($this->start,$this->end);
 
         $data['total_pemasukan'] = Transaksi::pemasukan()->sum('nominal'); 
         
@@ -91,5 +92,9 @@ class SemuaLaporan extends Component
         }
     
         return $months;
+    }
+
+    public function refresh(){
+        
     }
 }
