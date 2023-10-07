@@ -28,7 +28,7 @@
         </div>    
 
         <div class="flex item-center py-2 mx-2">
-            <button @click="open = false" type="botton" class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Batal</button>
+            <button @click="open = false" type="botton" class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Tutup</button>
         </div>    
 
 
@@ -63,6 +63,7 @@
                         <td scope="row">        
                             <div class="flex items-center space-x-3.5">
                                 <button  
+                                @click="open = true"
                                 wire:click="edit({{ $row->id }})"     
                                 class="hover:text-primary"
                                 >

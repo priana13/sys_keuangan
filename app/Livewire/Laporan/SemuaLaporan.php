@@ -38,7 +38,22 @@ class SemuaLaporan extends Component
         $data['bahan_baku'] = $bahan_baku->transaksi->sum('nominal'); 
         
         $asset = Kategori::where('nama', "Asset")->first();
-        $data['asset'] = $asset->transaksi->sum('nominal');      
+
+        if($asset){
+            $data['asset'] = $asset->transaksi->sum('nominal');
+
+            $data["pengeluaran_asset"] = Transaksi::selectRaw('MONTH(tanggal) as bulan, SUM(nominal) as pengeluaran')
+            ->pengeluaran()
+            ->where('kategori_id', $asset->id)
+            ->groupByRaw('MONTH(tanggal)')
+            ->pluck("pengeluaran", "bulan");
+
+        }else{
+
+            $data['asset'] = 0;
+            $data["pengeluaran_asset"] = [];
+
+        }               
 
 
         // Transaksi Non Operasional
@@ -63,11 +78,7 @@ class SemuaLaporan extends Component
                     ->groupByRaw('MONTH(tanggal)')
                     ->pluck("pengeluaran", "bulan");
 
-        $data["pengeluaran_asset"] = Transaksi::selectRaw('MONTH(tanggal) as bulan, SUM(nominal) as pengeluaran')
-                    ->pengeluaran()
-                    ->where('kategori_id', $asset->id)
-                    ->groupByRaw('MONTH(tanggal)')
-                    ->pluck("pengeluaran", "bulan");
+        
 
         $data["pengeluaran_bahan_baku"] = Transaksi::selectRaw('MONTH(tanggal) as bulan, SUM(nominal) as pengeluaran')
                     ->pengeluaran()
