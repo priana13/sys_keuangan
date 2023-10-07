@@ -20,6 +20,10 @@ class SemuaLaporan extends Component
 
     public function mount(){
 
+        if(auth()->user()->type != 'Administrator'){
+            abort(403);
+        }
+
         $this->start = date('Y-01-01');
         $this->end = date('Y-m-d');
     }

@@ -7,6 +7,13 @@ use Livewire\Component;
 
 class Dashboard extends Component
 {
+    public function mount(){
+
+        if(auth()->user()->type != 'Administrator'){
+            redirect()->route('pemasukan');
+        }
+
+    }
     public function render()
     {       
         $list_bulan = $this->list_bulan();     

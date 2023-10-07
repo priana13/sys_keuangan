@@ -9,6 +9,7 @@
         
         
         <ul class="space-y-2 font-medium mt-12">
+            @if(auth()->user()->type == 'Administrator')
             <li>
                 <a href="/dashboard" wire:navigate class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                     <svg
@@ -39,6 +40,7 @@
                     <span class="ml-3">Dashboard</span>
                 </a>
             </li>
+            @endif
             <li>
                 <a href="/pengeluaran" wire:navigate class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -63,6 +65,7 @@
                     <span class="flex-1 ml-3 whitespace-nowrap">Nota Bon</span>
                 </a>
             </li>
+           @if(auth()->user()->type == 'Administrator')
             <li>
                 <a href="/laporan" wire:navigate class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -70,7 +73,8 @@
                     </svg> 
                     <span class="flex-1 ml-3 whitespace-nowrap">Laporan</span>
                 </a>
-            </li>     
+            </li>   
+            @endif  
             <li>
                 <a href="/pajak" wire:navigate class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

@@ -20,6 +20,10 @@ class EditUser extends Component
     
     public function mount(User $record){
 
+        if(auth()->user()->type != 'Administrator' && $record->type == 'Administrator'){
+            abort(403);
+        }
+
         $this->record = $record;
 
         $this->name = $record->name;

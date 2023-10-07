@@ -16,6 +16,14 @@ class TambahUser extends Component
     public $type;
     public $password;
 
+    public function mount(){
+
+        // if(auth()->user()->type != 'Administrator'){
+        //     abort(403);
+        // }
+
+    }
+
     public function render()
     {
         return view('livewire.user.tambah-user');
@@ -29,6 +37,11 @@ class TambahUser extends Component
             'type' => 'required|string',
             'password' => 'required'
         ]);
+
+        if(auth()->user()->type != 'Administrator' && $this->type == 'Administrator'){
+
+            abort(403);
+        }
 
         User::create([
             'name' => $this->name,

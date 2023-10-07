@@ -18,10 +18,26 @@ class ListUser extends Component
         'confirmed'
     ];
 
+    public function mount(){
+
+        // if(auth()->user()->type != 'Administrator'){
+        //     abort(403);
+        // }
+
+    }
+
     public function render()
     {
+        if(auth()->user()->type == 'Administrator'){
 
-        $users = User::latest();
+            $users = User::latest();
+
+        }else{
+
+            $users = User::where('type', '!=', 'Administrator')->latest();
+
+        }        
+
 
         if($this->search){          
 
