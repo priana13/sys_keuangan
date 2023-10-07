@@ -4,6 +4,8 @@ namespace App\Livewire\NotaBon;
 
 use App\Models\NotaBon;
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportNotabon;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ListNotaBon extends Component
@@ -50,4 +52,9 @@ class ListNotaBon extends Component
 
         $this->alert('success', "Data Berhasil Dihapus");
     } 
+
+    public function export(){
+
+        return Excel::download(new ExportNotabon(), 'nota-bon.xlsx');
+    }
 }
