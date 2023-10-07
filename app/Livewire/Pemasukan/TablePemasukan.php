@@ -2,9 +2,11 @@
 
 namespace App\Livewire\Pemasukan;
 
+use App\Exports\ExportPemasukan;
 use Livewire\Component;
 use App\Models\Transaksi;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TablePemasukan extends Component
 {
@@ -59,6 +61,11 @@ class TablePemasukan extends Component
         $record->delete();
 
         $this->alert('success', "Data Berhasil Dihapus");
+    }
+
+    public function export(){
+
+        return Excel::download(new ExportPemasukan(), 'pemasukan.xlsx');
     }
 
 }
