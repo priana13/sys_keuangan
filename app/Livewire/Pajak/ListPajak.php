@@ -2,9 +2,11 @@
 
 namespace App\Livewire\Pajak;
 
+use App\Exports\ExportPajak;
 use App\Models\Pajak;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ListPajak extends Component
 {
@@ -115,5 +117,10 @@ class ListPajak extends Component
 
 
         $this->alert('success', "Data Berhasil Disimpan");
+    }
+
+    public function export(){
+
+        return Excel::download(new ExportPajak(), 'data-pajak.xlsx');
     }
 }
