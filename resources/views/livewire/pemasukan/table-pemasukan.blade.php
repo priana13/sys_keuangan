@@ -76,10 +76,12 @@
                             {{ date('d M Y', strtotime($row->tanggal)) }}
                         </th>
                         <td class="px-6 py-4">
-                            {{ $row->kas->nama }}
+
+                           {{ ($row->kas->type == 'cash')? number_format($row->nominal ,0,',','.'):0 }} 
+
                         </td>
                         <td class="px-6 py-4">
-                            {{ number_format($row->nominal ,0,',','.') }}
+                            {{ ($row->kas->type != 'cash')?number_format($row->nominal ,0,',','.'):0 }}
                         </td>
                         <td class="px-6 py-4">
                             {{ $row->kategori->nama }}
