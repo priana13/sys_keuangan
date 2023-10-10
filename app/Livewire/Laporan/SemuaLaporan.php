@@ -16,7 +16,7 @@ class SemuaLaporan extends Component
     public $laba_bersih;
 
     public $laba_rugi;
-    public $list_bulan;
+    public $list_bulan = [];
 
     public function mount(){
 
@@ -31,7 +31,8 @@ class SemuaLaporan extends Component
     public function render()
     {      
 
-        $this->list_bulan = $this->generateMonthList($this->start,$this->end);
+        // $this->list_bulan = $this->generateMonthList($this->start,$this->end);
+        $this->generateMonthList();
 
         $data['total_pemasukan'] = Transaksi::pemasukan()->sum('nominal'); 
         
@@ -91,25 +92,33 @@ class SemuaLaporan extends Component
                     ->pluck("pengeluaran", "bulan");
        
         $this->laba_bersih = $data['total_pemasukan'] - $data['pajak'];
+
+        $this->dispatch('getData'); 
         
         return view('livewire.laporan.semua-laporan' , $data);
     }
 
+    #[On('getData')] 
+    public function generateMonthList() {
+        $period = \Carbon\CarbonPeriod::create($this->start, '1 month', $this->end);
 
-    public function generateMonthList($start_date, $end_date) {
-        $start_month = date('n', strtotime($start_date));
-        $end_month = date('n', strtotime($end_date));
-        $months = [];
-    
-        for ($i = $start_month; $i <= $end_month; $i++) {
-            $month_name = date('m', mktime(0, 0, 0, $i, 1));
-            $months[] = $month_name;
+        $month= [];
+        foreach ($period as $dt) {
+             $month[] = $dt->format("Y-m");
         }
-    
-        return $months;
+
+        $this->list_bulan = $month;
     }
 
-    public function refresh(){
-        
+    public function tampilkan(){
+
+        $period = \Carbon\CarbonPeriod::create($this->start, '1 month', $this->end);
+
+        $month= [];
+        foreach ($period as $dt) {
+             $month[] = $dt->format("Y-m");
+        }
+
+        $this->list_bulan = $month;
     }
 }
