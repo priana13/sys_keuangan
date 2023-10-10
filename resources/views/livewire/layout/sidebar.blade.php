@@ -11,7 +11,7 @@
         <ul class="space-y-2 font-medium mt-12">
             @if(auth()->user()->type == 'Administrator')
             <li>
-                <a href="/dashboard" wire:navigate class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
+                <a href="/dashboard" class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                     <svg
                            class="fill-current"
                            width="18"
