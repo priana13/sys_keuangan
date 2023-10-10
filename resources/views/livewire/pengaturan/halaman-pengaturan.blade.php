@@ -1,4 +1,8 @@
-<div class="pb-4">
+<div class="pb-4" 
+    x-data="{
+        advance: false
+    }"
+>
     <div class="max-w-full">
 
         <div class="border-b-2 border-gray-400 py-3">
@@ -22,6 +26,21 @@
 
             {{-- kategori pengeluaran --}}
             <livewire:pengaturan.kategori-pengeluaran />
+
+        </div>        
+
+        <div class="mt-10 flex justify-center" x-show="advance">
+
+            {{-- kategori pengaturan kas --}}
+            <livewire:pengaturan.pengaturan-kas />           
+
+        </div>
+
+        <div class="flex justify-center my-3">
+
+            <button @click="advance = ! advance" type="button" class="py-2.5 px-5 mx-auto mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                Advance
+            </button>
 
         </div>
 

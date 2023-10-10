@@ -13,6 +13,11 @@ class Kas extends Model
 
     protected $guarded = [];
 
+    public function transaksi(){
+
+        return $this->hasMany(Transaksi::class, 'kas_id');
+    }
+
     public function scopeBank($query){
 
         return $query->where('type', 'bank');
