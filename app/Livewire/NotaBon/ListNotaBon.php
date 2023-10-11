@@ -21,7 +21,7 @@ class ListNotaBon extends Component
     public function render()
     {
 
-        $data['nota_bon'] = NotaBon::paginate(10);
+        $data['nota_bon'] = NotaBon::latest()->paginate(10);
 
         return view('livewire.nota-bon.list-nota-bon',$data);
     }
