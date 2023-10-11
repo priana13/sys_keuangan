@@ -9,27 +9,66 @@
         <h2 class="text-2xl font-extrabold dark:text-white">Pengaturan Kas</h2>
 
         <div>
-            <button @click="open = ! open" type="submit" class="text-white bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Tambah Kategori</button>
+            <button @click="open = ! open" type="submit" class="text-white bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Tambah Kas</button>
         </div>
         
     </div>
 
     {{-- form tambah --}}
-    <div class="flex" x-show="open">
+    <div x-show="open">
 
-        <div class="my-2 w-full">
-            <input wire:model="nama" type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nama Kategori">
-            @error('nama') <span class="text-red-500">{{ $message }}</span> @enderror
-        </div> 
+        <form wire:submit="{{ $action_type }}" class="flex justify-between card shadow-sm bg-gray-100 p-3 border-2 border-gray-300">
+        
+            <div class="grid grid-cols-2 gap-2 w-full">
 
-       
-        <div class="flex item-center py-2 ms-2">
-            <button wire:click="{{ $action_type }}" type="submit" class="text-gray-800 bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">Simpan</button>
-        </div>    
-
-        <div class="flex item-center py-2 mx-2">
-            <button @click="open = false" type="botton" class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Tutup</button>
-        </div>    
+                <div class="my-2">                
+                    <select wire:model="type" id="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                        <option value="">Jenis Kas</option> 
+                        <option value="Bank">Bank</option>   
+                        <option value="Cash">Cash</option>                  
+                       
+                    </select>
+          
+                    @error('type') <span class="text-red-500">{{ $message }}</span> @enderror
+          
+                </div>
+    
+                <div class="my-2 w-full">
+                    <input wire:model="nama" type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nama Kas">
+                    @error('nama') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div> 
+                
+        
+                <div class="my-2 w-full">
+                    <input wire:model="no_rek" type="text" name="no_rek" id="no_rek" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nomor Rekening">
+                    @error('no_rek') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div> 
+    
+    
+                <div class="my-2 w-full">
+                    <input wire:model="atas_nama" type="text" name="atas_nama" id="atas_nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Atas Nama">
+                    @error('atas_nama') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div> 
+    
+                
+    
+            </div>
+    
+            <div class="">
+    
+                <div class="py-2 ms-2">
+                    <button type="submit" class="text-gray-800 bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">Simpan</button>
+                </div>    
+        
+                <div class="py-2 mx-2">
+                    <button @click="open = false" type="botton" class="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Tutup</button>
+                </div>    
+        
+    
+            </div>
+   
+            
+        </form>      
 
 
 
