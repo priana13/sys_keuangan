@@ -44,13 +44,10 @@ class Transaksi extends Model
         return $query->whereYear('tanggal', date('Y'))->whereMonth('tanggal', date('m'));
     }
 
-    // protected function tanggal(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: fn (string $value) => Date('d-m-Y', strtotime($value)),
-    //     );
-    // }
+    public function scopePeriode($query, $start, $end){
 
+        return $query->whereDate('tanggal', '>=', $start)->whereDate('tanggal', '<=', $end);
+    }
 
 
 }

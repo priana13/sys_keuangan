@@ -1,8 +1,7 @@
 <div wire:id="agdagdagad65adf">
     {{-- top --}}
-    <form class="mb-10" wire:submit="filter">
-        <span x-text="$wire.end"></span>
-            {{ count($list_bulan) }}
+    <form class="mb-10" wire:submit="filter" id="form-filter-laporan">      
+          
         <div date-rangepicker class="flex items-center">
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
