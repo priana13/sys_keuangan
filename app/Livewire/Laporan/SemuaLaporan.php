@@ -6,33 +6,49 @@ use App\Models\Pajak;
 use Livewire\Component;
 use App\Models\Kategori;
 use App\Models\Transaksi;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class SemuaLaporan extends Component
 {
     public $start;
     public $end;
+    public $is_filter = false;
 
     public $laba_bersih;
 
     public $laba_rugi;
     public $list_bulan = [];
 
-    public function mount(){
-
+    public function mount(Request $request){
+       
         if(auth()->user()->type != 'Administrator'){
             abort(403);
         }
 
+        $this->generateMonthList();
+
         $this->start = date('Y-01-01');
         $this->end = date('Y-m-d');
+
+
     }
 
     public function render()
-    {      
+    { 
+        
+        if($this->is_filter){
 
-        // $this->list_bulan = $this->generateMonthList($this->start,$this->end);
-        $this->generateMonthList();
+           $start_date = $this->start;
+           $end_date = $this->end;
+    
+        }else{
+
+            $start_date = date('Y-01-01');
+            $end_date = date('Y-m-d');
+            
+        }        
 
         $data['total_pemasukan'] = Transaksi::pemasukan()->sum('nominal'); 
         
@@ -98,9 +114,24 @@ class SemuaLaporan extends Component
         return view('livewire.laporan.semua-laporan' , $data);
     }
 
-    #[On('getData')] 
+   
     public function generateMonthList() {
-        $period = \Carbon\CarbonPeriod::create($this->start, '1 month', $this->end);
+
+
+        if($this->is_filter){
+
+            $start_date = $this->start;
+            $end_date = $this->end;
+     
+         }else{
+ 
+             $start_date = date('Y-01-01');
+             $end_date = date('Y-m-d');
+             
+         }
+
+
+        $period = \Carbon\CarbonPeriod::create($start_date, '1 month', $end_date);
 
         $month= [];
         foreach ($period as $dt) {
@@ -110,15 +141,11 @@ class SemuaLaporan extends Component
         $this->list_bulan = $month;
     }
 
-    public function tampilkan(){
+    public function filter(){
 
-        $period = \Carbon\CarbonPeriod::create($this->start, '1 month', $this->end);
+        $this->is_filter = true;
 
-        $month= [];
-        foreach ($period as $dt) {
-             $month[] = $dt->format("Y-m");
-        }
+        $this->generateMonthList();
 
-        $this->list_bulan = $month;
     }
 }
