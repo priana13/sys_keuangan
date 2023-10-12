@@ -3,11 +3,13 @@
 
     <div class="mb-3 flex justify-between mt-8">
 
-        <div>
+        <div class="flex items-center">
              <a href="{{ route('pengeluaran.tambah') }}" wire:navigate class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                                 
                 Tambah
              </a>
+
+             @livewire('table.filter-table-pengeluaran')
 
         </div>
        
@@ -21,6 +23,7 @@
                 </div>
                 <input wire:model.live="search" class="block ms-2 w-full px-7 pl-10 sm:text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." required>
                 
+
             </div>           
                     
 
@@ -37,6 +40,7 @@
                 </button>   
 
             </div>
+           
             
 
         </div>

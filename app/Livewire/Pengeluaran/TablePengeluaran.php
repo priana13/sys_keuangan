@@ -31,15 +31,33 @@ class TablePengeluaran extends Component
     public $selected_id;
 
     public $search;
+    public $tanggal_awal;
+    public $tanggal_akhir;
 
     protected $listeners = [
-        'confirmed'
+        'confirmed',
+        'filterTable'
     ];
+
+    public function mount(){
+
+        $this->tanggal_awal = date('Y-01-01');
+        $this->tanggal_akhir = date('Y-m-d');
+    }
 
     public function render()
     {
 
         $transaksi = Transaksi::pengeluaran()->latest();
+
+        if($this->tanggal_awal && $this->tanggal_akhir){
+            
+            $transaksi->periode($this->tanggal_awal, $this->tanggal_akhir);
+        }
+
+        if($this->kategori_id){
+            $transaksi->where('kategori_id', $this->kategori_id);
+        }       
 
         if($this->search){          
 
@@ -84,6 +102,13 @@ class TablePengeluaran extends Component
     public function export(){
 
         return Excel::download(new ExportPengeluaran(), 'pengeluaran.xlsx');
+    }
+
+    public function filterTable($data){
+
+        $this->tanggal_awal = $data['tanggal_awal'];
+        $this->tanggal_akhir = $data['tanggal_akhir'];
+        $this->kategori_id = $data['kategori_id'];
     }
 
 
