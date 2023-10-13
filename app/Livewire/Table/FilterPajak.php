@@ -7,15 +7,13 @@ use App\Models\Kategori;
 
 class FilterPajak extends Component
 {
- 
-    public $kategori_id;
-    public $tanggal_awal;
-    public $tanggal_akhir;
+    public $bulan_awal;
+    public $bulan_akhir;
 
     public function mount(){
 
-        $this->tanggal_awal = date('Y-01-01');
-        $this->tanggal_akhir = date('Y-m-d');
+        $this->bulan_awal = date('Y-01');
+        $this->bulan_akhir = date('Y-m');
     }
 
     public function render()
@@ -27,10 +25,9 @@ class FilterPajak extends Component
 
     public function filter(){
 
-        $this->dispatch('filterTable',[
-            'kategori_id' => $this->kategori_id,
-            'tanggal_awal' => $this->tanggal_awal,
-            'tanggal_akhir' => $this->tanggal_akhir
+        $this->dispatch('filterTable',[            
+            'bulan_awal' => $this->bulan_awal,
+            'bulan_akhir' => $this->bulan_akhir
         ]);
     }
 }

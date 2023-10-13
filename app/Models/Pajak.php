@@ -23,4 +23,17 @@ class Pajak extends Model
         return $query->where('bulan', date('m'))->tahunIni();
     }
 
+    public function scopePeriode($query, $start, $end){
+
+        $tahun_awal = date('Y', strtotime($start));
+        $tahun_akhir = date('Y', strtotime($end));
+
+        $bulan_awal = date('m', strtotime($start));
+        $bulan_akhir = date('m', strtotime($end));
+
+        return $query->where('bulan', '>=', $bulan_awal)->where('tahun', '>=', $tahun_awal)
+                      ->where('bulan', '<=', $bulan_akhir)->where('tahun', '<=', $tahun_akhir);
+
+    }
+
 }

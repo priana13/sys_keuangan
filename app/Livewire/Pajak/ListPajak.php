@@ -22,18 +22,42 @@ class ListPajak extends Component
     public $form_type = "input";
     public $form_action = "Tambah Data";
 
+    public $bulan_awal;
+    public $bulan_akhir;
+
     protected $listeners = [
-        'confirmed'
+        'confirmed','filterTable'
     ];
     
     public function render()
     {
-        $data['list_pajak'] = Pajak::latest()->paginate(12);
+        $pajak = Pajak::latest();
 
-        $this->pajak_bulan = Pajak::bulanIni()->sum('jumlah');
-        $this->pajak_tahun = Pajak::tahunIni()->sum('jumlah');
+        if($this->bulan_awal && $this->bulan_akhir){
+            
+            $pajak->periode($this->bulan_awal, $this->bulan_akhir);
+
+            $this->pajak_bulan = Pajak::bulanIni()->periode($this->bulan_awal, $this->bulan_akhir)->sum('jumlah');
+            $this->pajak_tahun = Pajak::tahunIni()->periode($this->bulan_awal, $this->bulan_akhir)->sum('jumlah');
+
+        }else{
+
+            $this->pajak_bulan = Pajak::bulanIni()->sum('jumlah');
+            $this->pajak_tahun = Pajak::tahunIni()->sum('jumlah');   
+
+        }
+
+        $data['list_pajak'] = $pajak->paginate(12);
+
 
         return view('livewire.pajak.list-pajak', $data);
+    }
+
+
+    public function filterTable($data){
+      
+        $this->bulan_awal = $data['bulan_awal'];
+        $this->bulan_akhir = $data['bulan_akhir'];
     }
 
     public function input(){

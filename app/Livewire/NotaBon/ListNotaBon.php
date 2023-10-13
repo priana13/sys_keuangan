@@ -14,14 +14,32 @@ class ListNotaBon extends Component
     
     public $selected_id;
 
+    public $tanggal_awal;
+    public $tanggal_akhir;
+    public $status;
+
     protected $listeners = [
-        'confirmed'
+        'confirmed',
+        'filterTable'
     ];
 
     public function render()
     {
 
-        $data['nota_bon'] = NotaBon::latest()->paginate(10);
+        $nota_bon = NotaBon::latest();
+
+
+        if($this->tanggal_awal && $this->tanggal_akhir){
+            
+            $nota_bon->periode($this->tanggal_awal, $this->tanggal_akhir);
+        }
+
+        if($this->status){           
+
+            $nota_bon->where('status', $this->status);
+        }
+
+        $data['nota_bon'] = $nota_bon->paginate(10);
 
         return view('livewire.nota-bon.list-nota-bon',$data);
     }
@@ -56,5 +74,12 @@ class ListNotaBon extends Component
     public function export(){
 
         return Excel::download(new ExportNotabon(), 'nota-bon.xlsx');
+    }
+
+    public function filterTable($data){
+
+        $this->tanggal_awal = $data['tanggal_awal'];
+        $this->tanggal_akhir = $data['tanggal_akhir'];
+        $this->status = $data['status'];
     }
 }

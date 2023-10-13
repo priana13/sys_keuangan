@@ -17,13 +17,13 @@ x-data="{
 
           
             <div class="mb-6">
-                <label for="tanggal_awal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dari Tanggal</label>
-                <input wire:model="tanggal_awal" type="month" id="tanggal_awal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <label for="bulan_awal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dari Tanggal</label>
+                <input wire:model="bulan_awal" type="month" id="bulan_awal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             </div>
 
             <div class="mb-6">
-                <label for="tanggal_akhir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sampai Tanggal</label>
-                <input wire:model="tanggal_akhir" type="month" id="tanggal_akhir" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <label for="bulan_akhir" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sampai Tanggal</label>
+                <input wire:model="bulan_akhir" type="month" id="bulan_akhir" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             </div>
 
             

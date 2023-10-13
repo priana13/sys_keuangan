@@ -8,7 +8,7 @@ use App\Models\Kategori;
 class FilterNotaBon extends Component
 {
    
-    public $kategori_id;
+    public $status;
     public $tanggal_awal;
     public $tanggal_akhir;
 
@@ -28,7 +28,7 @@ class FilterNotaBon extends Component
     public function filter(){
 
         $this->dispatch('filterTable',[
-            'kategori_id' => $this->kategori_id,
+            'status' => $this->status,
             'tanggal_awal' => $this->tanggal_awal,
             'tanggal_akhir' => $this->tanggal_akhir
         ]);

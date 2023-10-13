@@ -13,4 +13,19 @@ class NotaBon extends Model
 
     protected $guarded = [];
 
+    public function scopeSudahBayar($query){
+
+        return $query->where('status', 'Sudah Bayar');
+    }
+
+    public function scopeBelumBayar($query){
+
+        return $query->where('status', 'Belum Bayar');
+    }
+
+    public function scopePeriode($query, $start, $end){
+
+        return $query->whereDate('tanggal', '>=', $start)->whereDate('tanggal', '<=', $end);
+    }
+
 }
