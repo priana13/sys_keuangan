@@ -5,8 +5,9 @@ namespace App\Livewire\Table;
 use Livewire\Component;
 use App\Models\Kategori;
 
-class FilterTablePengeluaran extends Component
+class FilterTablePemasukan extends Component
 {
+ 
     public $kategori_id;
     public $tanggal_awal;
     public $tanggal_akhir;
@@ -19,9 +20,9 @@ class FilterTablePengeluaran extends Component
 
     public function render()
     {
-        $data['kategori'] = Kategori::pengeluaran()->get();
+        $data['kategori'] = Kategori::pemasukan()->get();
 
-        return view('livewire.table.filter-table-pengeluaran', $data);
+        return view('livewire.table.filter-table-pemasukan', $data);
     }
 
     public function filter(){
