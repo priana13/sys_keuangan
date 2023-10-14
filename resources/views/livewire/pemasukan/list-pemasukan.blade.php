@@ -7,7 +7,7 @@
 
         <livewire:pemasukan.over-view-pemasukan />
 
-        <livewire:pemasukan.table-pemasukan />
+        <livewire:pemasukan.table-pemasukan lazy />
 
     </div>
 </div>

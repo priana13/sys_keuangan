@@ -7,7 +7,7 @@
 
         <livewire:pengeluaran.over-view-pengeluaran />
 
-        <livewire:pengeluaran.table-pengeluaran />
+        <livewire:pengeluaran.table-pengeluaran lazy />
 
     </div>
 
