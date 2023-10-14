@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Models\Pajak;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ImportPajak implements ToModel
+class ImportPajak implements ToModel , WithHeadingRow
 {
     /**
     * @param array $row
@@ -15,7 +16,14 @@ class ImportPajak implements ToModel
     public function model(array $row)
     {
         return new Pajak([
-            //
+            "bulan" => $row['bulan'],
+            "tahun" => $row['tahun'],
+            "jumlah" => $row['jumlah']
         ]);
+    }
+
+    public function headingRow(): int
+    {
+        return 1;
     }
 }

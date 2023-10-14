@@ -28,7 +28,7 @@
         
         </div>  
         
-        <p>Contoh File Import : <a href="{{ asset('format/import-pemasukan.xlsx') }}" class="text-blue-300">Lihat contoh file</a></p>
+        <p>Contoh File Import : <a href="{{ asset('format/import-pajak.xlsx') }}" class="text-blue-300">Lihat contoh file</a></p>
 
     </form>
 </div>
