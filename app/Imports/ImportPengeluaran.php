@@ -32,7 +32,7 @@ class ImportPengeluaran implements ToModel, WithHeadingRow
 
         return new Transaksi([
             'tanggal' => $row["tanggal"],
-            'type' => $row["type"],
+            'type' => "Pengeluaran",
             'nominal' => $row["nominal"],
             'keterangan' => $row["keterangan"],
             'kategori_id' => $kategori->id,

@@ -20,6 +20,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('pemasukan', \App\Livewire\Pemasukan\ListPemasukan::class)->name('pemasukan');
     Route::get('pemasukan/tambah', \App\Livewire\Pemasukan\TambahPemasukan::class)->name('pemasukan.tambah'); 
     Route::get('pemasukan/{pemasukan}/edit', \App\Livewire\Pemasukan\EditPemasukan::class)->name('pemasukan.edit'); 
+    Route::get('pemasukan/import', \App\Livewire\Pemasukan\HalamanImportPemasukan::class)->name('pemasukan.import'); 
 
     Route::get('nota-bon', \App\Livewire\NotaBon\ListNotaBon::class)->name('nota-bon'); 
     Route::get('nota-bon/tambah', \App\Livewire\NotaBon\TambahNotaBon::class)->name('nota-bon.tambah');   
