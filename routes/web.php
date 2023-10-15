@@ -31,7 +31,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('pajak', \App\Livewire\Pajak\ListPajak::class)->name('pajak');  
     Route::get('pajak/import', \App\Livewire\Pajak\HalamanImportPajak::class)->name('pajak.import');    
 
-    Route::get('pengaturan', \App\Livewire\Pengaturan\HalamanPengaturan::class)->name('pengaturan');   
+    Route::get('pengaturan', \App\Livewire\Pengaturan\HalamanPengaturan::class)->name('pengaturan')->lazy(enabled: true);   
     Route::get('closing-toko', \App\Livewire\Laporan\ClosingToko::class)->name('closing-toko');
     
     Route::get('user', \App\Livewire\User\ListUser::class)->name('user');  
