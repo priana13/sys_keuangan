@@ -4,13 +4,15 @@ namespace App\Livewire\NotaBon;
 
 use App\Models\NotaBon;
 use Livewire\Component;
-use Maatwebsite\Excel\Facades\Excel;
+use Livewire\WithPagination;
 use App\Exports\ExportNotabon;
+use Maatwebsite\Excel\Facades\Excel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ListNotaBon extends Component
 {
     use LivewireAlert;
+    use WithPagination;
     
     public $selected_id;
 

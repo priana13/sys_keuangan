@@ -6,13 +6,16 @@ use App\Models\Kas;
 use Livewire\Component;
 use App\Models\Kategori;
 use App\Models\Transaksi;
+use Livewire\WithPagination;
 use App\Exports\ExportPemasukan;
 use Maatwebsite\Excel\Facades\Excel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
+
 class TablePemasukan extends Component
 {
     use LivewireAlert;
+    use WithPagination;
 
     public $search;
     public $selected_id;

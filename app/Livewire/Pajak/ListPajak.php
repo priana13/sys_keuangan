@@ -2,15 +2,17 @@
 
 namespace App\Livewire\Pajak;
 
-use App\Exports\ExportPajak;
 use App\Models\Pajak;
 use Livewire\Component;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Exports\ExportPajak;
+use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ListPajak extends Component
 {
     use LivewireAlert;
+    use WithPagination;
 
     public $selected_id;
     public $pajak_bulan = 0;
