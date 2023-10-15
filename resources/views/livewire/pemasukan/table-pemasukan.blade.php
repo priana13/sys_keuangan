@@ -5,12 +5,13 @@
     <div class="mb-3 flex justify-between mt-8">
 
         <div class="flex items-center">
+            {{-- tambah dengan single page --}}
             <a x-show="false" href="{{ route('pemasukan.tambah') }}" wire:navigate class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                 Tambah
             </a> 
 
             <button           
-            @click="$wire.modalForm = true"
+            wire:click="tambah()"
             class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
             >
              Tambah
@@ -212,6 +213,6 @@
  
  
          </div>    
-     </x-modal.modal-form >
+    </x-modal.modal-form >
 
 </div>

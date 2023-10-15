@@ -116,6 +116,15 @@ class TablePengeluaran extends Component
         $this->kategori_id = $data['kategori_id'];
     }
 
+    public function tambah(){       
+
+        $this->reset();
+
+        $this->tanggal = date('Y-m-d');
+
+        $this->modalForm = true;       
+    }
+
     public function create(){
 
         $this->validate([
