@@ -1,4 +1,4 @@
-<div class="relative" x-show="$wire.modalTambah">
+<div class="relative" x-show="$wire.modalForm">
     <style>
 
         .modal-wrapper {          
@@ -23,7 +23,7 @@
     </style>
 
     <div id="popupWrapper" class="modal-wrapper transition ease-in-out flex items-center justify-center">
-      <div id="popup" class="modal sm:w-1/2">
+      <div id="popup" class="modal w-full sm:w-1/2 mx-2">
 
         {{ $slot }}
 

@@ -1,20 +1,16 @@
-<div
-   
->
-
+<div >
 
     <div class="mb-3 flex justify-between mt-8">
 
         <div class="flex items-center">
             {{-- Halaman tambah --}}
              <a x-show="false" href="{{ route('pengeluaran.tambah') }}" wire:navigate class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                                
-                Tambah
+                 Tambah
              </a>
 
              {{-- tambah dengan popup --}}
             <button           
-            @click="$wire.modalTambah = true"
+            @click="$wire.modalForm = true"
             class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
             >
              Tambah
@@ -140,14 +136,11 @@
 
 
     </div>
-    
-
-    
-    {{-- @include('livewire.pengeluaran.modal-edit-pengeluaran') --}}
+        
 
     {{-- @push('scripts')   --}}
 
-    <x-modal.modal-tambah-pengeluaran>
+    <x-modal.modal-form>
        <div>
             <h2 class="text-2xl font-semibold mb-4">Formulir Input</h2>           
 
@@ -208,7 +201,7 @@
               <div class="flex">
         
                 <div class="mx-2">
-                    <button @click="$wire.modalTambah = false" type="button" id="tutupPopup" class="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800" data-modal-hide="modal-ubah-pengeluaran">Tutup</button>
+                    <button @click="$wire.modalForm = false" type="button" id="tutupPopup" class="w-full text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800" data-modal-hide="modal-ubah-pengeluaran">Tutup</button>
                 </div>
         
                 <div class="mx-2">
@@ -219,8 +212,8 @@
             </form>
 
 
-    </div>    
-    </x-modal.modal-tambah-pengeluaran >
+        </div>    
+    </x-modal.modal-form >
 
     <script>
 

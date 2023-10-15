@@ -2,11 +2,13 @@
 
 namespace App\Livewire\Pemasukan;
 
-use App\Exports\ExportPemasukan;
+use App\Models\Kas;
 use Livewire\Component;
+use App\Models\Kategori;
 use App\Models\Transaksi;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Exports\ExportPemasukan;
 use Maatwebsite\Excel\Facades\Excel;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class TablePemasukan extends Component
 {
@@ -15,10 +17,22 @@ class TablePemasukan extends Component
     public $search;
     public $selected_id;
 
-    public $kategori_id;
-
     public $tanggal_awal;
     public $tanggal_akhir;
+
+    public $modalForm = false;
+    public $modalType = "create";
+
+    public $tanggal;
+    public $type = "Pemasukan";
+    public $nominal;
+    public $kategory;   
+    public $metode_bayar;
+    public $keterangan;
+    public $kas_id;   
+    public $kategori_id;
+
+    public $record;
 
 
     protected $listeners = [
@@ -29,7 +43,10 @@ class TablePemasukan extends Component
 
         $this->tanggal_awal = date('Y-01-01');
         $this->tanggal_akhir = date('Y-m-d');
+
+        $this->tanggal = date('Y-m-d');
     }
+
     
     public function render()
     {  
@@ -52,6 +69,8 @@ class TablePemasukan extends Component
 
         $data['transaksi'] = $transaksi->paginate(10);
 
+        $data['kas'] = Kas::all();
+        $data['kategori'] = Kategori::pemasukan()->get();
 
         return view('livewire.pemasukan.table-pemasukan', $data);
     }
@@ -94,6 +113,74 @@ class TablePemasukan extends Component
         $this->tanggal_awal = $data['tanggal_awal'];
         $this->tanggal_akhir = $data['tanggal_akhir'];
         $this->kategori_id = $data['kategori_id'];
+    }
+
+
+    public function create(){
+
+        $this->validate([
+            'nominal' => 'required', 
+            'kategori_id' => 'required',
+            'kas_id' => 'required',
+            'tanggal' => 'required'
+        ]);
+
+        $metode_bayar = Kas::find($this->kas_id);
+
+        Transaksi::create([
+            'tanggal' => $this->tanggal,
+            'type' => $this->type,
+            'nominal' => $this->nominal,
+            'keterangan' => $this->keterangan,
+            'kategori_id' => $this->kategori_id,
+            'user_id' => auth()->user()->id,
+            'kas_id' => $this->kas_id,
+            'metode_bayar' => $metode_bayar->type
+        ]);        
+
+        $this->reset();
+
+        // $this->dispatch('tutupModal');
+
+        // return redirect()->route('pengeluaran');
+
+
+        $this->alert('success', 'Data Berhasil Disimpan');
+    }
+
+    public function edit($id){
+     
+        $this->modalType = "update";
+
+        $this->selected_id = $id;
+        $this->record = Transaksi::find($id);
+
+        $this->tanggal = $this->record->tanggal;
+        $this->nominal = $this->record->nominal;        
+        $this->metode_bayar = $this->record->metode_bayar;
+        $this->keterangan = $this->record->keterangan;
+        $this->kas_id = $this->record->kas_id;   
+        $this->kategori_id = $this->record->kategori_id;
+
+        $this->modalForm = true;
+    }
+
+    public function update(){
+
+        $record = Transaksi::find($this->selected_id);
+
+        $record->tanggal = $this->tanggal;
+        $record->nominal = $this->nominal;       
+        $record->metode_bayar = $this->metode_bayar;
+        $record->keterangan = $this->keterangan;
+        $record->kas_id = $this->kas_id;   
+        $record->kategori_id = $this->kategori_id;
+        $record->save();
+
+
+        $this->modalForm = false;
+        $this->alert('success', 'Data Berhasil Diupdate');
+        
     }
 
 }

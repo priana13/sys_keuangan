@@ -20,11 +20,11 @@ class Kas extends Model
 
     public function scopeBank($query){
 
-        return $query->where('type', 'bank');
+        return $query->where('type', 'Bank');
     }
 
     public function scopeCash($query){
 
-        return $query->where('type', 'cash');
+        return $query->where('type', 'Cash');
     }
 }

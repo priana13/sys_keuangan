@@ -35,7 +35,7 @@ class TablePengeluaran extends Component
     public $tanggal_awal;
     public $tanggal_akhir;
 
-    public $modalTambah = false;
+    public $modalForm = false;
     public $modalType = "create";
 
     protected $listeners = [
@@ -72,7 +72,7 @@ class TablePengeluaran extends Component
         $data['transaksi'] = $transaksi->paginate(10);
 
         $data['kas'] = Kas::all();
-        $data['kategori'] = Kategori::all();
+        $data['kategori'] = Kategori::pengeluaran()->get();
 
         return view('livewire.pengeluaran.table-pengeluaran', $data);
     }
@@ -162,7 +162,7 @@ class TablePengeluaran extends Component
         $this->kas_id = $this->record->kas_id;   
         $this->kategori_id = $this->record->kategori_id;
 
-        $this->modalTambah = true;
+        $this->modalForm = true;
     }
 
     public function update(){
@@ -178,7 +178,7 @@ class TablePengeluaran extends Component
         $record->save();
 
 
-        $this->modalTambah = false;
+        $this->modalForm = false;
         $this->alert('success', 'Data Berhasil Diupdate');
         
     }
