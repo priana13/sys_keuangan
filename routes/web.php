@@ -22,7 +22,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('pemasukan/{pemasukan}/edit', \App\Livewire\Pemasukan\EditPemasukan::class)->name('pemasukan.edit'); 
     Route::get('pemasukan/import', \App\Livewire\Pemasukan\HalamanImportPemasukan::class)->name('pemasukan.import'); 
 
-    Route::get('nota-bon', \App\Livewire\NotaBon\ListNotaBon::class)->name('nota-bon'); 
+    Route::get('nota-bon', \App\Livewire\NotaBon\ListNotaBon::class)->name('nota-bon')->lazy(enabled: true); 
     Route::get('nota-bon/tambah', \App\Livewire\NotaBon\TambahNotaBon::class)->name('nota-bon.tambah');   
     Route::get('nota-bon/{record}/edit', \App\Livewire\NotaBon\EditNotaBon::class)->name('nota-bon.edit');    
     Route::get('nota-bon/import', \App\Livewire\NotaBon\HalamanImportNotaBon::class)->name('nota-bon.import');    
@@ -31,7 +31,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('pajak', \App\Livewire\Pajak\ListPajak::class)->name('pajak');  
     Route::get('pajak/import', \App\Livewire\Pajak\HalamanImportPajak::class)->name('pajak.import');    
 
-    Route::get('pengaturan', \App\Livewire\Pengaturan\HalamanPengaturan::class)->name('pengaturan');   
+    Route::get('pengaturan', \App\Livewire\Pengaturan\HalamanPengaturan::class)->name('pengaturan')->lazy(enabled: true);   
     Route::get('closing-toko', \App\Livewire\Laporan\ClosingToko::class)->name('closing-toko');
     
     Route::get('user', \App\Livewire\User\ListUser::class)->name('user');  

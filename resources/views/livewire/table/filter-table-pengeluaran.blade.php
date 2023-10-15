@@ -1,4 +1,4 @@
-<div class="mx-3 relative bg-gray-200"
+<div class="mx-3 bg-gray-200"
 x-data="{
     open:false,
 }"

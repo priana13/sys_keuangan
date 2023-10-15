@@ -12,10 +12,10 @@
        
     </div>  
     
-    <h2 class="text-xl dark:text-white">Administrator</h2>
+    <h2 class="text-xl dark:text-white">Administrator ({{ $administrator }})</h2>
 
-    <h2 class="text-xl dark:text-white">Manajer</h2>
+    <h2 class="text-xl dark:text-white">Manajer ({{ $manajer }})</h2>
 
-
+    <h2 class="text-xl dark:text-white">Kasir ({{ $kasir }})</h2>
 
 </div>

@@ -11,10 +11,10 @@
         
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" >
             {{-- pengaturan perusahaan --}}
-            <livewire:pengaturan.pengaturan-perusahaan />
+            <livewire:pengaturan.pengaturan-perusahaan lazy />
 
             {{-- pengaturan pengguna --}}
-            <livewire:pengaturan.pengaturan-pengguna />
+            <livewire:pengaturan.pengaturan-pengguna lazy />
 
         </div>
 
@@ -22,17 +22,17 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-10" >
 
             {{-- kategori pemasukan --}}
-            <livewire:pengaturan.kategori-pemasukan />
+            <livewire:pengaturan.kategori-pemasukan lazy />
 
             {{-- kategori pengeluaran --}}
-            <livewire:pengaturan.kategori-pengeluaran />
+            <livewire:pengaturan.kategori-pengeluaran lazy />
 
         </div>        
 
         <div class="mt-10 flex justify-center" x-show="advance">
 
             {{-- kategori pengaturan kas --}}
-            <livewire:pengaturan.pengaturan-kas />           
+            <livewire:pengaturan.pengaturan-kas lazy />           
 
         </div>
 
