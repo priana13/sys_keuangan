@@ -26,19 +26,36 @@ class Dashboard extends Component
         $data_pengeluaran = Transaksi::selectRaw('MONTH(tanggal) as bulan, SUM(nominal) as pengeluaran')
                     ->pengeluaran()
                     ->groupByRaw('MONTH(tanggal)')
-                    ->pluck("pengeluaran");
+                    ->pluck("pengeluaran", "bulan");
+
+        $pemasukan = [];
+        $pengeluaran = [];
+       
 
         foreach ($list_bulan as $key => $value) {
           
             $bulan[] = $value;
-            $pemasukan[] = $data_pemasukan[$key];
-            $pengeluaran[] = (isset($data_pengeluaran[$key]))? $data_pengeluaran[$key] : 0;
+
+            if(isset($data_pemasukan[$key])){
+
+                $pemasukan[] = $data_pemasukan[$key];
+            }else{
+                $pemasukan[] = 0;
+            }
+
+            if(isset($data_pengeluaran[$key])){
+
+                $pengeluaran[] = (isset($data_pengeluaran[$key]))? $data_pengeluaran[$key] : 0;
+            }else{
+                $pengeluaran[] = 0;
+            } 
+
 
             if($key >= intval( date('m') ) ){
                 break;
             }
-        }       
-      
+        } 
+           
 
         return view('livewire.dashboard' , compact('bulan', 'pemasukan', 'pengeluaran'));
     }
