@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kas', function (Blueprint $table) {
             $table->id();
             
-            $table->enum('type', ["cash", "bank"])->default('cash'); // cash / bank
+            $table->enum('type', ["Cash", "Bank"])->default('Cash'); // cash / bank
             $table->string('nama');
             $table->string("bank")->nullable();
             $table->string('no_rek')->nullable();
