@@ -43,6 +43,9 @@ class ClosingToko extends Component
 
         $status_input = false;
 
+        $penjualan = Kategori::where('nama', 'Penjualan')->pemasukan()->first();    
+        
+
         // input ke pemasukan bank
         if( count($this->data_bank) > 0 ){
 
@@ -53,10 +56,10 @@ class ClosingToko extends Component
                 'type' => "Pemasukan",
                 'nominal' => $value,
                 'keterangan' => 'Closing Toko',
-                'kategori_id' => 1,
+                'kategori_id' => $penjualan->id,
                 'user_id' => auth()->user()->id,
                 'kas_id' => $key,
-                'metode_bayar' => 'bank'
+                'metode_bayar' => 'Bank'
                ]);
             }
 
@@ -73,10 +76,10 @@ class ClosingToko extends Component
                  'type' => "Pemasukan",
                  'nominal' => $value,
                  'keterangan' => 'Closing Toko',
-                 'kategori_id' => 1,
+                 'kategori_id' => $penjualan->id,
                  'user_id' => auth()->user()->id,
                  'kas_id' => $key,
-                 'metode_bayar' => 'cash'
+                 'metode_bayar' => 'Cash'
                 ]);
              }
 
@@ -98,7 +101,7 @@ class ClosingToko extends Component
                 'kategori_id' => $supir->id,
                 'user_id' => auth()->user()->id,
                 'kas_id' => $cash->id,
-                'metode_bayar' => 'cash'
+                'metode_bayar' => 'Cash'
                ]);
 
             $status_input = true;
@@ -117,7 +120,7 @@ class ClosingToko extends Component
                 'kategori_id' => $band->id,
                 'user_id' => auth()->user()->id,
                 'kas_id' => $cash->id,
-                'metode_bayar' => 'cash'
+                'metode_bayar' => 'Cash'
                ]);
 
             $status_input = true;

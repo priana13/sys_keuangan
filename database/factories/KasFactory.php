@@ -17,7 +17,7 @@ class KasFactory extends Factory
     public function definition(): array
     {
 
-        $types = ["cash", "bank"];
+        $types = ["Cash", "Bank"];
         $kas = ["Mandiri", "BNI", "BCA", "Cash"];
 
         return [
