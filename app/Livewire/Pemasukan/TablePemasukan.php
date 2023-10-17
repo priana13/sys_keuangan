@@ -54,7 +54,7 @@ class TablePemasukan extends Component
     public function render()
     {  
 
-        $transaksi = Transaksi::pemasukan()->latest();
+        $transaksi = Transaksi::pemasukan()->orderBy('tanggal','desc');
 
         if($this->tanggal_awal && $this->tanggal_akhir){
             

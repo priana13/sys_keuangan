@@ -33,7 +33,7 @@ class ListPajak extends Component
     
     public function render()
     {
-        $pajak = Pajak::latest();
+        $pajak = Pajak::orderBy('tahun', 'desc')->orderBy('bulan', 'desc');
 
         if($this->bulan_awal && $this->bulan_akhir){
             
