@@ -43,7 +43,7 @@
             
             <div class="mx-1">
                 <button wire:click="export" type="button" class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-800 dark:focus:ring-gray-900">                                    
-                    Export CSV
+                    Export
                 </button>   
 
             </div>

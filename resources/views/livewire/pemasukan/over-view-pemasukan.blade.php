@@ -4,7 +4,7 @@
     <div class="rounded-lg border border-stroke bg-gray-800 text-white py-1 px-3 shadow-sm dark:border-strokedark dark:bg-boxdark">
               
         <div class="text-center">
-            <span class="text-sm font-medium mb-2">Total Pemasukan / Hari</span>
+            <span class="text-sm font-medium mb-2">Pemasukan Hari Ini</span>
             <h4 class="text-title-md font-bold dark:text-white">
             Rp. {{ number_format($totalHariIni ,0,',', '.')  }}
             </h4>             
@@ -17,27 +17,13 @@
     <div class="rounded-lg border border-stroke bg-gray-800 text-white py-1 px-3 shadow-sm dark:border-strokedark dark:bg-boxdark">
               
         <div class="text-center">
-            <span class="text-sm font-medium mb-2">Total Pemasukan / Bulan</span>
+            <span class="text-sm font-medium mb-2">Pemasukan Bulan Ini</span>
             <h4 class="text-title-md font-bold dark:text-white">
             Rp. {{ number_format($totalBulanIni ,0,',', '.')  }}
             </h4>             
         </div>          
         
-    </div>
-
-
-    <div class="rounded-lg border border-stroke bg-gray-800 text-white py-1 px-3 shadow-sm dark:border-strokedark dark:bg-boxdark">
-              
-        <div class="text-center">
-            <span class="text-sm font-medium mb-2">Total Band / Bulan</span>
-            <h4 class="text-title-md font-bold dark:text-white">
-            Rp. {{ number_format(100000 ,0,',', '.')  }}
-            </h4>             
-        </div>  
-        
-        
-    </div>
-   
+    </div>   
 
     
   </div>
