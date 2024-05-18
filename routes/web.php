@@ -17,6 +17,9 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('pengeluaran/{pengeluaran}/edit', \App\Livewire\Pengeluaran\EditPengeluaran::class)->name('pengeluaran.edit'); 
     Route::get('pengeluaran/import', \App\Livewire\Pengeluaran\ImportPengeluaran::class)->name('pengeluaran.import'); 
 
+    Route::get('transaksi', \App\Livewire\Transaksi\ListTransaksi::class)->name('transaksi');
+
+
     Route::get('pemasukan', \App\Livewire\Pemasukan\ListPemasukan::class)->name('pemasukan');
     Route::get('pemasukan/tambah', \App\Livewire\Pemasukan\TambahPemasukan::class)->name('pemasukan.tambah'); 
     Route::get('pemasukan/{pemasukan}/edit', \App\Livewire\Pemasukan\EditPemasukan::class)->name('pemasukan.edit'); 

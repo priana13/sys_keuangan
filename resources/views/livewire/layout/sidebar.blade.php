@@ -43,7 +43,17 @@
                 </a>
             </li>
             @endif
+
             <li>
+                <a href="/transaksi" wire:navigate class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+                    </svg>
+                    <span class="flex-1 ml-3 whitespace-nowrap">Transaksi</span>                    
+                </a>
+            </li>
+
+            {{-- <li>
                 <a href="/pengeluaran" wire:navigate class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
@@ -51,6 +61,7 @@
                     <span class="flex-1 ml-3 whitespace-nowrap">Pengeluaran</span>                    
                 </a>
             </li>
+
             <li>
                 <a href="/pemasukan" wire:navigate class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -58,7 +69,8 @@
                     </svg>
                     <span class="flex-1 ml-3 whitespace-nowrap">Pemasukan</span>                    
                 </a>
-            </li>
+            </li> --}}
+
             <li>
                 <a href="/nota-bon" wire:navigate class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
