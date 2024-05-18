@@ -23,7 +23,7 @@
             </div>
 
 
-            @livewire('table.filter-table-pemasukan')
+            @livewire('transaksi.filter-table-transaksi')
 
         </div>
      
@@ -71,43 +71,64 @@
                         <th scope="col" class="px-6 py-3">
                             Tanggal
                         </th>
+
                         <th scope="col" class="px-6 py-3">
-                            Cash
+                            Type
                         </th>
+
                         <th scope="col" class="px-6 py-3">
-                            Debit
-                        </th>
+                            Keterangan
+                        </th>                       
+                       
                         <th scope="col" class="px-6 py-3">
                             Kategori
                         </th>
+
                         <th scope="col" class="px-6 py-3">
-                            Total
+                            Nominal
                         </th>
-                        <th>Action</th>
+
+                        {{-- <th scope="col" class="px-6 py-3">
+                            Saldo
+                        </th> --}}
+
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
     
-                   @foreach($transaksi as $row)
+                   @foreach($transaksi as $row)                 
                    
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr class="bg-{{ ($row->type == 'Pemasukan') ? 'green' : 'red' }}-100 border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ date('d M Y', strtotime($row->tanggal)) }}
                         </th>
+
                         <td class="px-6 py-4">
 
-                           {{ ($row->kas->type == 'Cash')? number_format($row->nominal ,0,',','.'):0 }} 
+                            {{ $row->type }} 
+ 
+                         </td>  
 
-                        </td>
                         <td class="px-6 py-4">
-                            {{ ($row->kas->type != 'Cash')?number_format($row->nominal ,0,',','.'):0 }}
-                        </td>
+
+                            {{ $row->keterangan }} 
+ 
+                         </td>                      
+                       
+
                         <td class="px-6 py-4">
                             {{ $row->kategori->nama }}
                         </td>
+
                         <td class="px-6 py-4">
                             {{ number_format($row->nominal ,0,',','.') }}
                         </td>
+
+                        {{-- <td class="px-6 py-4">
+                            {{ number_format($row->nominal ,0,',','.') }}
+                        </td> --}}
+
                         <td>
     
                             <div class="flex items-center space-x-3.5">

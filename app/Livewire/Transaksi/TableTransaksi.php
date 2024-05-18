@@ -42,8 +42,8 @@ class TableTransaksi extends Component
 
     public function mount(){
 
-        $this->tanggal_awal = date('Y-01-01');
-        $this->tanggal_akhir = date('Y-m-d');
+        // $this->tanggal_awal = date('Y-01-01');
+        // $this->tanggal_akhir = date('Y-m-d');
 
         $this->tanggal = date('Y-m-d');
     }
