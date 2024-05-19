@@ -6,7 +6,7 @@
         <div class="text-center">
             <span class="text-sm font-medium mb-2">Pemasukan</span>
             <h4 class="text-title-md font-bold dark:text-white">
-            Rp. {{ number_format(30000000 ,0,',', '.')  }}
+            Rp. {{ number_format($total_pemasukan ,0,',', '.')  }}
             </h4>             
         </div>  
         
@@ -19,7 +19,7 @@
         <div class="text-center">
             <span class="text-sm font-medium mb-2">Pengeluaran</span>
             <h4 class="text-title-md font-bold dark:text-white">
-            Rp. {{ number_format(20000000 ,0,',', '.')  }}
+            Rp. {{ number_format($total_pengeluaran ,0,',', '.')  }}
             </h4>             
         </div>          
         

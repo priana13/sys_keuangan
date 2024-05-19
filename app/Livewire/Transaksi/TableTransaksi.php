@@ -27,13 +27,13 @@ class TableTransaksi extends Component
     public $modalType = "create";
 
     public $tanggal;
-    public $type = "Pemasukan";
+    public $type = "Pengeluaran";
     public $nominal;
     public $kategory;   
     public $metode_bayar;
     public $keterangan;
     public $kas_id;   
-    public $kategori_id;
+    public $kategori_id;   
 
     public $record;
 
@@ -71,7 +71,7 @@ class TableTransaksi extends Component
         $data['transaksi'] = $transaksi->paginate(10);
 
         $data['kas'] = Kas::all();
-        $data['kategori'] = Kategori::get();
+        $data['kategori'] = Kategori::where('type', $this->type)->get();
         
         return view('livewire.transaksi.table-transaksi' , $data);
     }
@@ -100,6 +100,8 @@ class TableTransaksi extends Component
         $record = Transaksi::findOrFail($this->selected_id);
 
         $record->delete();
+
+        $this->dispatch('updateOverView');
 
         $this->alert('success', "Data Berhasil Dihapus");
     }
@@ -132,7 +134,8 @@ class TableTransaksi extends Component
             'nominal' => 'required', 
             'kategori_id' => 'required',
             'kas_id' => 'required',
-            'tanggal' => 'required'
+            'tanggal' => 'required',
+            'keterangan' => 'required'
         ]);
 
         $metode_bayar = Kas::find($this->kas_id);
@@ -154,6 +157,7 @@ class TableTransaksi extends Component
 
         // return redirect()->route('pengeluaran');
 
+        $this->dispatch('updateOverView');
 
         $this->alert('success', 'Data Berhasil Disimpan');
     }
@@ -189,6 +193,9 @@ class TableTransaksi extends Component
 
 
         $this->modalForm = false;
+
+        $this->dispatch('updateOverView');
+        
         $this->alert('success', 'Data Berhasil Diupdate');
         
     }
