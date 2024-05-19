@@ -17,9 +17,9 @@ class OverViewTransaksi extends Component
 
     public function render()
     {
-        $this->total_pemasukan = Transaksi::pemasukan()->sum('nominal');
+        $this->total_pemasukan = Transaksi::mine()->pemasukan()->sum('nominal');
 
-        $this->total_pengeluaran = Transaksi::pengeluaran()->sum('nominal');
+        $this->total_pengeluaran = Transaksi::mine()->pengeluaran()->sum('nominal');
 
         return view('livewire.transaksi.over-view-transaksi');
     }

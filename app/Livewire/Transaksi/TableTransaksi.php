@@ -189,6 +189,7 @@ class TableTransaksi extends Component
         $record->keterangan = $this->keterangan;
         $record->kas_id = $this->kas_id;   
         $record->kategori_id = $this->kategori_id;
+        $record->type = $this->type;
         $record->save();
 
 
