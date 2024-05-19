@@ -24,6 +24,11 @@ class Transaksi extends Model
         return $this->belongsTo(Kas::class, 'kas_id');
     }
 
+    public function scopeMine($query){
+        
+        return $query->where('user_id', auth()->user()->id);
+    }
+
     public function scopePengeluaran($query){
 
         return $query->where('type', "Pengeluaran");

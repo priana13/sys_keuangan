@@ -14,7 +14,7 @@ class ExportPemasukan implements FromCollection , WithMapping , WithHeadings
     */
     public function collection()
     {
-        return Transaksi::pemasukan()->get();
+        return Transaksi::mine()->get();
     }
 
     public function map($transaksi): array

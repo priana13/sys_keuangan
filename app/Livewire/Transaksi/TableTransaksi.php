@@ -7,6 +7,8 @@ use Livewire\Component;
 use App\Models\Kategori;
 use App\Models\Transaksi;
 use Livewire\WithPagination;
+use App\Exports\ExportPemasukan;
+use Maatwebsite\Excel\Facades\Excel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class TableTransaksi extends Component
@@ -50,7 +52,7 @@ class TableTransaksi extends Component
     
     public function render()
     {
-        $transaksi = Transaksi::orderBy('tanggal','desc');
+        $transaksi = Transaksi::mine()->orderBy('tanggal','desc');
 
         if($this->tanggal_awal && $this->tanggal_akhir){
             
