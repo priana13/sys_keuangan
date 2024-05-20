@@ -47,7 +47,8 @@ class PengaturanKas extends Component
             'type' => $this->type,
             "nama" => $this->nama,
             "no_rek" => $this->no_rek,
-            'atas_nama' => $this->atas_nama
+            'atas_nama' => $this->atas_nama,
+            'user_id' => auth()->user()->id
         ]);
 
         $this->alert('success', "Data Berhasil Disimpan");
@@ -61,7 +62,7 @@ class PengaturanKas extends Component
         $this->nama = $this->record->nama;
         $this->type = $this->record->type;
         $this->atas_nama = $this->record->atas_nama;
-        $this->no_rek = $this->record->no_rek;
+        $this->no_rek = $this->record->no_rek;        
         
         $this->action_type = "update";
     }
@@ -73,7 +74,8 @@ class PengaturanKas extends Component
         $this->record->nama = $this->nama;
         $this->record->no_rek = $this->no_rek;
         $this->record->type = $this->type;
-        $this->record->atas_nama = $this->atas_nama;
+        $this->record->atas_nama = $this->atas_nama;    
+        $this->record->user_id = auth()->user()->id;   
         $this->record->save();
 
         $this->alert('success', "Data Berhasil Diudate");

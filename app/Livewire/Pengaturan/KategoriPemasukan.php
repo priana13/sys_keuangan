@@ -34,6 +34,7 @@ class KategoriPemasukan extends Component
         ]);
 
         Kategori::create([
+            "user_id" => auth()->user()->id,
             "nama" => $this->nama,
             "type" => "Pemasukan"
         ]);
@@ -85,6 +86,7 @@ class KategoriPemasukan extends Component
         $record = Kategori::findOrFail($this->selected_id);
 
         $record->nama = $this->nama;
+        $record->user_id = auth()->user()->id;
         $record->save();
 
         $this->alert('success', "Data Berhasil Diupdate");

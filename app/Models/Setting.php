@@ -37,11 +37,13 @@ class Setting extends Model
 
             $setting = self::create([
                 'name' => $name,
-                'value' => $value
+                'value' => $value,
+                'user_id' => auth()->user()->id
             ]);
         }else{
 
             $setting->value = $value;
+            $setting->user_id = auth()->user()->id;
             $setting->save();
         }
 
