@@ -39,7 +39,7 @@ class TableTransaksi extends Component
 
 
     protected $listeners = [
-        'confirmed', 'filterTable'
+        'confirmed', 'filterTable','ubah_type'
     ];
 
     public function mount(){
@@ -53,6 +53,11 @@ class TableTransaksi extends Component
     public function render()
     {
         $transaksi = Transaksi::mine()->orderBy('tanggal','desc');
+
+        if($this->type != 'All'){
+            
+            $transaksi = $transaksi->where('type', $this->type);
+        }
 
         if($this->tanggal_awal && $this->tanggal_akhir){
             
@@ -199,5 +204,12 @@ class TableTransaksi extends Component
         
         $this->alert('success', 'Data Berhasil Diupdate');
         
+    }
+
+
+   
+    public function ubah_type($type)
+    {
+       $this->type = $type;
     }
 }
