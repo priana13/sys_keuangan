@@ -40,12 +40,12 @@
             </div>
                     
 
-            <div class="mx-1">
+            {{-- <div class="mx-1">
                 <a href="{{ route('nota-bon.import') }}" class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-800 dark:focus:ring-gray-900">
                                     
                     Import
                 </a>
-            </div>
+            </div> --}}
             
             <div class="mx-1">
                 <button wire:click="export" type="button" class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-800 dark:focus:ring-gray-900">                                    
@@ -68,7 +68,10 @@
                         Tanggal
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Nama Sulier
+                        Keterangan
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Nama
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Total
@@ -87,14 +90,21 @@
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ tgl($row->tanggal) }}
                     </th>
+
+                    <td class="px-6 py-4">
+                        {{ $row->keterangan }}
+                    </td>
+
                     <td class="px-6 py-4">
                         {{ $row->nama_suplier }}
                     </td>
                     <td class="px-6 py-4">
                         {{ rupiah($row->total) }}
                     </td>
-                    <td class="px-6 py-4">
-                        {{ $row->status }}
+                    <td class="px-6 py-4">                           
+                    
+                        <span class="bg-{{ $warna[$row->status] }}-100 text-{{ $warna[$row->status] }}-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-{{ $warna[$row->status] }}-900 dark:text-{{ $warna[$row->status] }}-300">{{ $row->status }}</span>
+                       
                     </td>
                     <td>
 
@@ -149,6 +159,12 @@
                     <input wire:model="tanggal" type="date" name="tanggal" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                     @error('tanggal') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
+
+                <div class="my-3">
+                    <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
+                    <input wire:model="keterangan" type="text" name="keterangan" id="keterangan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                    @error('keterangan') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div>
         
                 <div class="my-3">
                   <label for="total" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">total</label>
@@ -158,8 +174,8 @@
               </div>   
         
               <div class="my-3">
-                  <label for="kas_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Suplier</label>
-                  <input wire:model="nama_suplier" type="text" name="nama_suplier" id="nama_suplier" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="nama_suplier">
+                  <label for="kas_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                  <input wire:model="nama" type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="nama">
         
                   @error('kas_id') <span class="text-red-500">{{ $message }}</span> @enderror
         
@@ -168,14 +184,16 @@
               <div class="my-3">
                     <label for="kas_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Pembayaran</label>
         
-                    <div class="flex items-center mb-4">
-                        <input wire:model="status" value="Sudah Bayar" id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sudah Bayar</label>
-                    </div>
                     <div class="flex items-center">
                         <input wire:model="status" value="Belum Bayar" checked id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="default-radio-2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Belum Bayar</label>
                     </div>
+                    
+                    <div class="flex items-center mb-4">
+                        <input wire:model="status" value="Sudah Bayar" id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="default-radio-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sudah Bayar</label>
+                    </div>
+                   
               </div>
 
                <div class="flex">

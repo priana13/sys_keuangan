@@ -27,7 +27,7 @@ class TableTransaksi extends Component
     public $modalType = "create";
 
     public $tanggal;
-    public $type = "Pengeluaran";
+    public $type = "All";
     public $nominal;
     public $kategory;   
     public $metode_bayar;

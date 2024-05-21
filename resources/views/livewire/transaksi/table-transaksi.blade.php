@@ -8,12 +8,12 @@
             {{-- tambah dengan single page --}}  
             
             
-            <div class="mx-1 hidden sm:block">
+            {{-- <div class="mx-1 hidden sm:block">
                 <a href="{{ route('pemasukan.import') }}" class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-800 dark:focus:ring-gray-900">
                                     
                     Import
                 </a>
-            </div>
+            </div> --}}
             
             <div class="mx-1 hidden sm:block">
                 <button wire:click="export" type="button" class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-800 dark:focus:ring-gray-900">                                    

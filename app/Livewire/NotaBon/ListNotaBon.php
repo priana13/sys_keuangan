@@ -24,10 +24,17 @@ class ListNotaBon extends Component
     public $modalType = "create";
 
     public $tanggal;
+    public $keterangan;
     public $suplier;
     public $total;
-    public $status;
-    public $nama_suplier;
+    public $status = 'Belum Bayar';
+
+    public $nama;
+
+    public array $warna = [
+        'Sudah Bayar' => 'green',
+        'Belum Bayar' => 'red'
+    ];
 
     protected $listeners = [
         'confirmed',
@@ -113,13 +120,16 @@ class ListNotaBon extends Component
         $this->validate([
             'tanggal' => 'required',
             'total' => 'required',
-            'nama_suplier' => 'required'            
+            'keterangan' => 'required',
+            'nama' => 'required'            
         ]);
 
         NotaBon::create([
+            'user_id' => auth()->user()->id,
             'tanggal' => $this->tanggal,
+            'keterangan' => $this->keterangan,
             'total' => $this->total,
-            'nama_suplier' => $this->nama_suplier,
+            'nama_suplier' => $this->nama,
             'status' => $this->status
         ]);
 
@@ -147,15 +157,17 @@ class ListNotaBon extends Component
 
         $this->validate([
             'tanggal' => 'required',
+            'keterangan' => 'required',
             'total' => 'required',
-            'nama_suplier' => 'required'            
+            'nama' => 'required'            
         ]);
 
         $record = NotaBon::find($this->selected_id);
 
+        $record->keterangan = $this->keterangan;
         $record->tanggal = $this->tanggal;
         $record->total = $this->total;       
-        $record->nama_suplier = $this->nama_suplier;
+        $record->nama_suplier = $this->nama;
         $record->status = $this->status;       
         $record->save();
 
