@@ -27,4 +27,9 @@ class Kas extends Model
 
         return $query->where('type', 'Cash');
     }
+
+    public function scopeMine($query){
+
+        return $query->where('user_id', auth()->user()->id);
+    }
 }

@@ -19,7 +19,7 @@ class FilterTableTransaksi extends Component
 
     public function render()
     {
-        $data['kategori'] = Kategori::whereHas('transaksi')->get();
+        $data['kategori'] = Kategori::mine()->whereHas('transaksi')->get();
 
         return view('livewire.transaksi.filter-table-transaksi' , $data);
     }

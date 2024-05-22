@@ -28,4 +28,9 @@ class Kategori extends Model
         return $query->where('type', "Pemasukan");
     }
 
+    public function scopeMine($query){
+
+        return $query->where('user_id', auth()->user()->id);
+    }
+
 }

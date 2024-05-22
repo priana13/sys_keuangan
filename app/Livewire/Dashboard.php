@@ -9,9 +9,9 @@ class Dashboard extends Component
 {
     public function mount(){
 
-        if(auth()->user()->type != 'Administrator'){
-            redirect()->route('pemasukan');
-        }
+        // if(auth()->user()->type != 'Administrator'){
+        //     redirect()->route('pemasukan');
+        // }
 
     }
     public function render()

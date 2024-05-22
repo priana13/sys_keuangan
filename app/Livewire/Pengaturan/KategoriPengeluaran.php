@@ -22,7 +22,7 @@ class KategoriPengeluaran extends Component
     
     public function render()
     {
-        $data['kategori_pengeluaran'] = Kategori::pengeluaran()->get();
+        $data['kategori_pengeluaran'] = Kategori::mine()->pengeluaran()->get();
         
         return view('livewire.pengaturan.kategori-pengeluaran', $data);
     }

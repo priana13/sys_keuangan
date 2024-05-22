@@ -27,7 +27,8 @@ class TableTransaksi extends Component
     public $modalType = "create";
 
     public $tanggal;
-    public $type = "All";
+    public $filter_type = 'All';
+    public $type = "Pengeluaran";
     public $nominal;
     public $kategory;   
     public $metode_bayar;
@@ -52,11 +53,11 @@ class TableTransaksi extends Component
     
     public function render()
     {
-        $transaksi = Transaksi::mine()->orderBy('tanggal','desc');
+        $transaksi = Transaksi::mine()->orderBy('id','desc');
 
-        if($this->type != 'All'){
+        if($this->filter_type != 'All'){
             
-            $transaksi = $transaksi->where('type', $this->type);
+            $transaksi = $transaksi->where('type', $this->filter_type);
         }
 
         if($this->tanggal_awal && $this->tanggal_akhir){
@@ -75,8 +76,8 @@ class TableTransaksi extends Component
 
         $data['transaksi'] = $transaksi->paginate(10);
 
-        $data['kas'] = Kas::all();
-        $data['kategori'] = Kategori::where('type', $this->type)->get();
+        $data['kas'] = Kas::mine()->get();
+        $data['kategori'] = Kategori::mine()->where('type', $this->type)->get();
         
         return view('livewire.transaksi.table-transaksi' , $data);
     }
@@ -127,6 +128,8 @@ class TableTransaksi extends Component
 
         $this->reset();
 
+        $this->type = 'Pengeluaran';
+
         $this->tanggal = date('Y-m-d');
 
         $this->modalForm = true;       
@@ -168,12 +171,15 @@ class TableTransaksi extends Component
     }
 
     public function edit($id){
+
+        $this->reset();
      
         $this->modalType = "update";
 
         $this->selected_id = $id;
         $this->record = Transaksi::find($id);
 
+        $this->type = $this->record->type;
         $this->tanggal = $this->record->tanggal;
         $this->nominal = $this->record->nominal;        
         $this->metode_bayar = $this->record->metode_bayar;
@@ -210,6 +216,6 @@ class TableTransaksi extends Component
    
     public function ubah_type($type)
     {
-       $this->type = $type;
+       $this->filter_type = $type;
     }
 }

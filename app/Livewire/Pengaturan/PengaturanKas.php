@@ -34,7 +34,7 @@ class PengaturanKas extends Component
 
     public function render()
     {
-        $kas = Kas::all();
+        $kas = Kas::mine()->get();
 
         return view('livewire.pengaturan.pengaturan-kas',compact('kas'));
     }
