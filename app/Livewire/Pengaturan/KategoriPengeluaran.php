@@ -30,7 +30,7 @@ class KategoriPengeluaran extends Component
     public function create(){
 
         $this->validate([
-            'nama' => "required|unique:kategori"
+            'nama' => "required"
         ]);
 
         Kategori::create([

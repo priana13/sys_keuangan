@@ -15,7 +15,7 @@
     </div>
 
     {{-- form tambah --}}
-    <div class="flex" x-show="open">
+    <form class="flex" x-show="open" wire:submit="{{ $action_type }}">
 
         <div class="my-2 w-full">
             <input wire:model="nama" type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nama Kategori">
@@ -24,7 +24,7 @@
 
        
         <div class="flex item-center py-2 ms-2">
-            <button wire:click="{{ $action_type }}" type="submit" class="text-gray-800 bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">Simpan</button>
+            <button type="submit" class="text-gray-800 bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">Simpan</button>
         </div>    
 
         <div class="flex item-center py-2 mx-2">
@@ -33,7 +33,7 @@
 
 
 
-    </div>
+    </form>
     {{-- end form tambah --}}
   
     {{-- table --}}
@@ -57,7 +57,7 @@
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 ">                            
 
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">   
-                            {{ $row->nama }}                             
+                            {{ $row->nama }}  ({{ $row->transaksi->count() }})                          
                         </th>               
                                                     
                         <td scope="row">        

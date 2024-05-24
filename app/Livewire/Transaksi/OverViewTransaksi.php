@@ -11,8 +11,10 @@ class OverViewTransaksi extends Component
 
     public $total_pemasukan;
 
+    public $type;
+
     protected $listeners = [
-        'updateOverView'
+        'updateOverView' , 'ubah_type'
     ];
 
     public function render()
@@ -27,6 +29,11 @@ class OverViewTransaksi extends Component
     public function updateOverView(){
         // method ini akan menangkap jika ada perubahan pada table
 
+    }
+
+    public function ubah_type($type){
+
+        // dd($type);
     }
 
 
