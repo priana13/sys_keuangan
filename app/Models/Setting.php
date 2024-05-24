@@ -15,13 +15,14 @@ class Setting extends Model
 
     public static function getData($name){
 
-        $setting = Setting::where('name' , $name)->first();
+        $setting = Setting::mine()->where('name' , $name)->first();
 
         if(!$setting){
 
             $setting = self::create([
                 'name' => $name,
-                'value' => ''
+                'value' => '',
+                'user_id' => auth()->user()->id
             ]);
         }
 
@@ -31,7 +32,7 @@ class Setting extends Model
     public static function setData(string $name , string | int | null $value){
        
 
-        $setting = Setting::where('name' , $name)->first();
+        $setting = Setting::mine()->where('name' , $name)->first();
 
         if(!$setting){
 
@@ -48,6 +49,11 @@ class Setting extends Model
         }
 
         return $setting;
+    }
+
+    public function scopeMine($query){
+        
+        return $query->where('user_id', auth()->user()->id);
     }
     
 }

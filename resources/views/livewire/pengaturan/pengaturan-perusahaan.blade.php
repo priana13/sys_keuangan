@@ -34,7 +34,7 @@
                   
                 <div class="col-span-3 flex justify-end">
                     <div>
-                        <button wire:click="simpan" type="submit" class="text-gray-800 bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800" data-modal-hide="modal-ubah-pengeluaran">Submit</button>
+                        <button wire:click="simpan" type="submit" class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" data-modal-hide="modal-ubah-pengeluaran">Simpan</button>
                     </div>
                     
                 </div>

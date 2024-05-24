@@ -14,7 +14,7 @@
             <livewire:pengaturan.pengaturan-perusahaan lazy />
 
             {{-- pengaturan pengguna --}}
-            <livewire:pengaturan.pengaturan-pengguna lazy />
+            {{-- <livewire:pengaturan.pengaturan-pengguna lazy /> --}}
 
         </div>
 

@@ -9,7 +9,7 @@
         <h2 class="text-2xl font-extrabold dark:text-white">Kategori Pemasukan</h2>
 
         <div>
-            <button @click="open = ! open" type="submit" class="text-white bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Tambah Kategori</button>
+            <button @click="open = ! open" type="submit" class="text-white bg-gray-800 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-md text-sm px-3 py-1 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">+</button>
         </div>
         
     </div>
