@@ -21,11 +21,8 @@ class SemuaLaporan extends Component
     public $laba_rugi;
     public $list_bulan = [];
 
-    public function mount(Request $request){
-       
-        if(auth()->user()->type != 'Administrator'){
-            abort(403);
-        }
+    public function mount(Request $request){       
+        
 
         $this->generateMonthList();
 

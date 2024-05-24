@@ -1,4 +1,4 @@
-<div wire:id="agdagdagad65adf">
+<div class="mx-8">
     {{-- top --}}
     <form class="mb-10" wire:submit="filter" id="form-filter-laporan">      
           
@@ -31,16 +31,31 @@
     {{-- end top --}}
 
     {{-- summery --}}
-    <div class="flex justify-between mb-8">
+    <div class="mb-8">
 
-        @include('livewire.laporan.partial.table-summery-laporan')
+        @livewire('laporan.laporan-pemasukan')
 
-        @include('livewire.laporan.partial.table-summery-laporan-kanan')
+        @livewire('laporan.laporan-pengeluaran')
+
+        
+
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mt-3"> 
+            <tr class="dark:bg-gray-800 dark:border-gray-700"> 
+                <th scope="row" class="py-1"> Saldo Akhir </th>
+                <th></th>
+                <th scope="row" class="justify-end"> 20.000.0000</th>
+            </tr>
+        </table>
+
+
+        {{-- @include('livewire.laporan.partial.table-summery-laporan')
+
+        @include('livewire.laporan.partial.table-summery-laporan-kanan') --}}
 
     </div>
     {{-- end summery --}}
 
-    <div class="relative overflow-x-auto">
+    <div class="relative overflow-x-auto hidden">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
