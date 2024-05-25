@@ -1,3 +1,3 @@
 <div>
-    <img src="{{ asset('storage/' . $logo) }}" alt="Logo" class="w-20 h-20 rounded-full shadow-md">
+    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="w-20 h-20 rounded-full shadow-md">
 </div>

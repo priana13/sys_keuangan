@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Setting extends Model
 {
@@ -51,9 +52,12 @@ class Setting extends Model
         return $setting;
     }
 
-    public function scopeMine($query){
-        
-        return $query->where('user_id', auth()->user()->id);
+    public function scopeMine($query){     
+
+        if(Auth::check()) {
+            return $query->where('user_id', auth()->user()->id);
+        }         
+            
     }
     
 }

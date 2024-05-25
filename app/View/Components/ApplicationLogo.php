@@ -23,8 +23,8 @@ class ApplicationLogo extends Component
      */
     public function render(): View|Closure|string
     {
-        $logo = Setting::getData('logo')->value;
+        // $logo = Setting::getData('logo_utama')->value;
 
-        return view('components.application-logo', compact('logo'));
+        return view('components.application-logo');
     }
 }
