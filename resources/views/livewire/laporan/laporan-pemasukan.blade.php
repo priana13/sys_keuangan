@@ -8,13 +8,13 @@
                 <tr class="dark:bg-gray-800 dark:border-gray-700"> 
                     <td scope="row" class="py-2"> Saldo Awal </td>
                     <td class="text-end"></td>
-                    <td scope="row" class="text-end">200000</td>
+                    <td scope="row" class="text-end">{{ number($saldo_awal) }}</td>
                 </tr>
 
                 @foreach($list_pemasukan as $pemasukan)
                 <tr class="dark:bg-gray-800 dark:border-gray-700"> 
                     <td scope="row" class="py-2"> {{ $pemasukan->nama }} </td>
-                    <td class="text-end">{{ number_format( $pemasukan->transaksi->sum('nominal') , 0) }}</td>
+                    <td class="text-end">{{ number( $pemasukan->transaksi->sum('nominal')) }}</td>
                     <td scope="row"></td>
                 </tr>
 
@@ -28,7 +28,7 @@
                 <tr class="py-2">
                     <th class="py-2">Total Pemasukan</th>
                     <th></th>
-                    <th class="text-end underline">{{ number_format( $total_pemasukan , 0) }}</th>
+                    <th class="text-end underline">{{ number( $total_pemasukan) }}</th>
                 </tr>
                 
 

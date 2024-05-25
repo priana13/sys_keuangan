@@ -10,7 +10,7 @@
 
                 <tr class="dark:bg-gray-800 dark:border-gray-700"> 
                     <td scope="row" class="py-2"> {{ $pengeluaran->nama }} </td>
-                    <td class="text-end">{{ number_format( $pengeluaran->transaksi->sum('nominal') , 0) }}</td>
+                    <td class="text-end">{{ number( $pengeluaran->transaksi->sum('nominal')) }}</td>
                     <td scope="row"></td>
                 </tr>
 
@@ -24,7 +24,7 @@
                 <tr class="py-2">
                     <th class="py-2">Total Pengeluaran</th>
                     <th></th>
-                    <th class="text-end underline">{{ $total_pengeluaran }}</th>
+                    <th class="text-end underline">{{ number( $total_pengeluaran ) }}</th>
                 </tr>
                 
 

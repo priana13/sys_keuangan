@@ -9,6 +9,14 @@ use Livewire\Component;
 class LaporanPemasukan extends Component
 {
     public $total_pemasukan;
+
+    public $saldo_awal = 0;  
+
+    public function mount(){
+
+        // get saldo awal
+        $this->saldo_awal = Transaksi::getSaldoAwal();
+    }
     
     public function render()
     {
