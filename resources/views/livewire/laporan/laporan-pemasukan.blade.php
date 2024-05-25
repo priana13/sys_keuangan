@@ -1,35 +1,34 @@
-<div class="w-1/2">  
+<div class="">  
         
-    <h2 class="my-2 text-gray-700 font-bold">Pemasukan</h2>
+    <h2 class="my-2 text-gray-700 font-bold">1. Pemasukan</h2>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <tbody> 
                 
                 <tr class="dark:bg-gray-800 dark:border-gray-700"> 
                     <td scope="row" class="py-2"> Saldo Awal </td>
-                    <td>0</td>
-                    <td scope="row"></td>
+                    <td class="text-end"></td>
+                    <td scope="row" class="text-end">200000</td>
                 </tr>
+
+                @foreach($list_pemasukan as $pemasukan)
                 <tr class="dark:bg-gray-800 dark:border-gray-700"> 
-                    <td scope="row" class="py-2"> Penjualan </td>
-                    <td>0</td>
+                    <td scope="row" class="py-2"> {{ $pemasukan->nama }} </td>
+                    <td class="text-end">{{ number_format( $pemasukan->transaksi->sum('nominal') , 0) }}</td>
                     <td scope="row"></td>
                 </tr>
-                <tr class="dark:bg-gray-800 dark:border-gray-700"> 
-                    <td scope="row" class="py-2"> Piutang </td>
-                    <td>0</td>
-                    <td scope="row"></td>
-                </tr>
-                <tr class="dark:bg-gray-800 dark:border-gray-700 border-b-2 border-b-gray-300"> 
-                    <td scope="row" class="py-2"> Lain-lain </td>
-                    <td>0</td>
-                    <td scope="row"></td>
-                </tr>
+
+                @php
+                    $total_pemasukan += $pemasukan->transaksi->sum('nominal');
+                @endphp
+
+                @endforeach
+            
                 <tr></tr>
                 <tr class="py-2">
                     <th class="py-2">Total Pemasukan</th>
                     <th></th>
-                    <th class="justify-end">400.000,0</th>
+                    <th class="text-end underline">{{ number_format( $total_pemasukan , 0) }}</th>
                 </tr>
                 
 
