@@ -60,7 +60,7 @@
                 <tr class="dark:bg-gray-800 dark:border-gray-700"> 
                     <th scope="row" class="py-1"> Saldo Akhir </th>
                     <th></th>
-                    <th scope="row" class="text-end font-bold underline"> 20.000.0000</th>
+                    <th scope="row" class="text-end font-bold underline"> {{ number($saldo_akhir) }} </th>
                 </tr>
             </table>          
 

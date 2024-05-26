@@ -29,9 +29,11 @@ class LaporanPemasukan extends Component
             $this->start_date, $this->end_date
         );
 
-        $saldo_akhir_bulan_lalu = $this->getSaldoAkhirBulanLalu();
+        $saldo_akhir_bulan_lalu = Transaksi::getSaldoAkhirBulanLalu($this->start_date , $this->end_date);
 
         $this->saldo_awal = $saldo_awal_kas + $saldo_akhir_bulan_lalu;
+
+      
     }
     
     public function render()
@@ -45,14 +47,5 @@ class LaporanPemasukan extends Component
         return view('livewire.laporan.laporan-pemasukan' , \compact('list_pemasukan'));
     }
 
-    public function getSaldoAkhirBulanLalu(){
 
-        $total_pemasukan = Transaksi::mine()->pemasukan()->periode($this->start_date, $this->end_date)->sum('nominal');
-
-        $total_pengeluaran = Transaksi::mine()->Pengeluaran()->periode($this->start_date, $this->end_date)->sum('nominal');
-
-        $saldo = $total_pemasukan - $total_pengeluaran;     
-
-        return $saldo;
-    }
 }

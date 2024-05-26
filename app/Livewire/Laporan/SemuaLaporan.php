@@ -21,7 +21,9 @@ class SemuaLaporan extends Component
     public $laba_rugi;
     public $list_bulan = [];
 
-    public function mount(Request $request){       
+    public $saldo_akhir = 0;
+
+    public function mount(Request $request){ 
         
 
         $this->generateMonthList();
@@ -29,6 +31,9 @@ class SemuaLaporan extends Component
         $this->start = date('Y-01-01');
         $this->end = date('Y-m-d');
 
+        $this->saldo_akhir = Transaksi::getSaldoAkhir($this->start, $this->end);
+
+        // dd($this->total_saldo);
 
     }
 
@@ -150,4 +155,6 @@ class SemuaLaporan extends Component
         $this->generateMonthList();
 
     }
+
+
 }

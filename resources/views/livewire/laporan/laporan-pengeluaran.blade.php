@@ -10,7 +10,7 @@
 
                 <tr class="dark:bg-gray-800 dark:border-gray-700"> 
                     <td scope="row" class="py-2"> {{ $pengeluaran->nama }} </td>
-                    <td class="text-end">{{ number( $pengeluaran->transaksi->sum('nominal')) }}</td>
+                    <td class="text-end">{{ number( $pengeluaran->transaksi()->periode($this->start_date, $this->end_date)->sum('nominal')) }}</td>
                     <td scope="row"></td>
                 </tr>
 

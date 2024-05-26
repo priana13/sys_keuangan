@@ -54,5 +54,47 @@ class Transaksi extends Model
         return $query->whereDate('tanggal', '>=', $start)->whereDate('tanggal', '<=', $end);
     }
 
+    // public static function getSaldoAkhir(){
+        
+    //     return 
+    // }
+
+
+    public static function getSaldoAkhirBulanLalu($start_date , $end_date){
+
+        $total_pemasukan = self::mine()->pemasukan()->periode($start_date, $end_date)->sum('nominal');
+
+        $total_pengeluaran = self::mine()->Pengeluaran()->periode($start_date, $end_date)->sum('nominal');
+
+        $saldo = $total_pemasukan - $total_pengeluaran;     
+
+        return $saldo;
+    }
+
+
+    public static function getTotalPengeluaran($start_date , $end_date){
+
+        return self::mine()->pengeluaran()->periode($start_date, $end_date)->sum('nominal');
+    }
+
+
+    public static function getSaldoAkhir($start_date , $end_date){
+
+        $saldo_awal_kas = Kas::getSaldoAwal($start_date, $end_date);
+
+        $saldo_bulan_lalu = self::getSaldoAkhirBulanLalu($start_date, $end_date); // saldo akhir + tambah pemasukan
+
+        $pemasukan = self::mine()->pemasukan()->periode($start_date, $end_date)->sum('nominal');
+
+        $total_pemasukan  = $saldo_awal_kas + $saldo_bulan_lalu + $pemasukan;
+
+        $pengeluaran = self::getTotalPengeluaran($start_date, $end_date);
+
+        $saldo_akhir = $total_pemasukan - $pengeluaran;
+
+        return $saldo_akhir;
+
+    }
+
 
 }
