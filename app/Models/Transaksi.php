@@ -54,14 +54,5 @@ class Transaksi extends Model
         return $query->whereDate('tanggal', '>=', $start)->whereDate('tanggal', '<=', $end);
     }
 
-    public static function getSaldoAwal(){
-
-        // saldo awal diambil dari saldo pertama masing2 kas
-        // untuk data global saldo masing2 kas di jumlahkan menjadi satu
-        // untuk bulan berikutnya, saldo awal diambil dari saldo terakhir bulan sebelumnya
-
-        return 50000;
-    }
-
 
 }

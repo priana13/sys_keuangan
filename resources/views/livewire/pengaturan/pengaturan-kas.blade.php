@@ -49,6 +49,11 @@
                     <input wire:model="atas_nama" type="text" name="atas_nama" id="atas_nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Atas Nama">
                     @error('atas_nama') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div> 
+
+                <div class="my-2 w-full">
+                    <input wire:model="saldo_awal" type="number" name="saldo_awal" id="saldo_awal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full py-2 px-5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Saldo Awal">
+                    @error('saldo_awal') <span class="text-red-500">{{ $message }}</span> @enderror
+                </div> 
     
                 
     
@@ -95,6 +100,10 @@
                         <th scope="col" class="px-6 py-3">
                             Atas Nama
                         </th>  
+
+                        <th scope="col" class="px-6 py-3">
+                            Saldo Awal
+                        </th>  
                                         
                         <th scope="col" class="px-6 py-3">Action</th>
                     </tr>
@@ -119,6 +128,10 @@
 
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $row->atas_nama }}
+                        </td>
+
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ number($row->saldo_awal) }}
                         </td>
                                                     
                         <td scope="row">        

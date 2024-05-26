@@ -14,13 +14,9 @@
                 @foreach($list_pemasukan as $pemasukan)
                 <tr class="dark:bg-gray-800 dark:border-gray-700"> 
                     <td scope="row" class="py-2"> {{ $pemasukan->nama }} </td>
-                    <td class="text-end">{{ number( $pemasukan->transaksi->sum('nominal')) }}</td>
+                    <td class="text-end">{{ number( $pemasukan->transaksi()->periode($this->start_date, $this->end_date)->sum('nominal')) }}</td>
                     <td scope="row"></td>
-                </tr>
-
-                @php
-                    $total_pemasukan += $pemasukan->transaksi->sum('nominal');
-                @endphp
+                </tr>             
 
                 @endforeach
             

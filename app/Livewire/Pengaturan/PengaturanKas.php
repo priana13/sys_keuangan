@@ -23,8 +23,11 @@ class PengaturanKas extends Component
     #[Rule('required|min:3')] 
     public $atas_nama;
 
-    #[Rule('required|min:3')] 
+    #[Rule('nullable|min:3')] 
     public $no_rek;
+
+    #[Rule('required:integer')]
+    public $saldo_awal;
 
     public $record;
 
@@ -48,7 +51,8 @@ class PengaturanKas extends Component
             "nama" => $this->nama,
             "no_rek" => $this->no_rek,
             'atas_nama' => $this->atas_nama,
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
+            'saldo_awal' => $this->saldo_awal
         ]);
 
         $this->alert('success', "Data Berhasil Disimpan");
@@ -62,7 +66,8 @@ class PengaturanKas extends Component
         $this->nama = $this->record->nama;
         $this->type = $this->record->type;
         $this->atas_nama = $this->record->atas_nama;
-        $this->no_rek = $this->record->no_rek;        
+        $this->no_rek = $this->record->no_rek;
+        $this->saldo_awal = $this->record->saldo_awal;        
         
         $this->action_type = "update";
     }
@@ -75,8 +80,11 @@ class PengaturanKas extends Component
         $this->record->no_rek = $this->no_rek;
         $this->record->type = $this->type;
         $this->record->atas_nama = $this->atas_nama;    
+        $this->record->saldo_awal = $this->saldo_awal;
         $this->record->user_id = auth()->user()->id;   
         $this->record->save();
+
+        $this->reset();
 
         $this->alert('success', "Data Berhasil Diudate");
 
