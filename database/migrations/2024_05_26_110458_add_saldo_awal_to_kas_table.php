@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('kas', function (Blueprint $table) {
-            $table->integer('saldo_awal')->nullable();
+            $table->integer('saldo_awal')->nullable()->default(0);
             $table->date('tanggal_saldo_awal')->nullable();
+            $table->integer('saldo_akhir')->nullable()->default(0);
+            $table->date('tanggal_saldo_akhir')->nullable();
         });
     }
 
@@ -25,6 +27,8 @@ return new class extends Migration
         Schema::table('kas', function (Blueprint $table) {
             $table->dropColumn('saldo_awal');
             $table->dropColumn('tanggal_saldo_awal');
+            $table->dropColumn('saldo_akhir');
+            $table->dropColumn('tanggal_saldo_akhir');
         });
     }
 };
