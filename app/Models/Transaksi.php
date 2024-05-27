@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Kas;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -58,6 +59,20 @@ class Transaksi extends Model
         
     //     return 
     // }
+
+    public function getSaldoAwal($start_date , $end_date){
+
+        // 1. Saldo awal dari kas
+        // 2. Saldo awal dari saldo bulan terakhir
+
+        $saldo_awal_kas = Kas::getSaldoAwal(
+            $this->start_date, $this->end_date
+        );
+
+        $saldo_awal = $saldo_awal_kas + $this->getSaldoAkhirBulanLalu($start_date , $end_date);
+
+        return $saldo_awal;
+    }    
 
 
     public static function getSaldoAkhirBulanLalu($start_date , $end_date){
