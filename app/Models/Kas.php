@@ -48,4 +48,22 @@ class Kas extends Model
        
         return $saldo_kas;
     }
+
+    public static function getSaldoAkhirKas($kas_id):void
+    {
+
+        $kas = Kas::find($kas_id);        
+
+        $pemasukan_kas = Transaksi::mine()->pemasukan()->where('kas_id' , $kas_id)->sum("nominal");        
+
+        $pengeluaran_kas = Transaksi::mine()->pengeluaran()->where('kas_id' , $kas_id)->sum("nominal");
+
+        $saldo_kas = $kas->saldo_awal + $pemasukan_kas - $pengeluaran_kas; 
+
+        $kas->saldo_akhir = $saldo_kas;
+        $kas->save();
+
+        // return $saldo_kas;
+
+    }
 }

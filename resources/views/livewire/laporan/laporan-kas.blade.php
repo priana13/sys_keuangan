@@ -8,7 +8,7 @@
                 @foreach($list_kas as $kas)
                 <tr class="dark:bg-gray-800 dark:border-gray-700"> 
                     <td scope="row" class="py-2"> {{ $kas->nama }} </td>
-                    <td class="text-end">{{ $kas->saldo_akhir }}</td>
+                    <td class="text-end">{{ number( $kas->saldo_akhir ) }}</td>
                     <td scope="row"></td>
                 </tr>
 
