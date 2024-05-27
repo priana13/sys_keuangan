@@ -10,6 +10,9 @@ use Livewire\Component;
 
 class LaporanPemasukan extends Component
 {
+    
+    public $pemasukan_bulan_ini = 0; 
+
     public $total_pemasukan;
 
     // saldo awal kas + saldo_akhir bulan sebelumnya
@@ -24,15 +27,7 @@ class LaporanPemasukan extends Component
         $this->start_date = now()->startOfMonth();
         $this->end_date = now();
 
-        // get saldo awal dari kas baru
-        $saldo_awal_kas = Kas::getSaldoAwal(
-            $this->start_date, $this->end_date
-        );
-
-        $saldo_akhir_bulan_lalu = Transaksi::getSaldoAkhirBulanLalu($this->start_date , $this->end_date);
-
-        $this->saldo_awal = $saldo_awal_kas + $saldo_akhir_bulan_lalu;
-
+        $this->saldo_awal = Transaksi::getSaldoAwal($this->start_date, $this->end_date);
       
     }
     
@@ -40,9 +35,11 @@ class LaporanPemasukan extends Component
     {  
         $list_pemasukan = Kategori::mine()->pemasukan()->get();  
         
-        $pemasukan = Transaksi::mine()->pemasukan()->periode($this->start_date, $this->end_date)->sum('nominal');
+        $pemasukan = Transaksi::getTotalPemasukan($this->start_date, $this->end_date);
 
         $this->total_pemasukan = $this->saldo_awal + $pemasukan;
+
+        $this->pemasukan_bulan_ini = $pemasukan;
 
         return view('livewire.laporan.laporan-pemasukan' , \compact('list_pemasukan'));
     }

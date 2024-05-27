@@ -60,16 +60,16 @@ class Transaksi extends Model
     //     return 
     // }
 
-    public function getSaldoAwal($start_date , $end_date){
+    public static function getSaldoAwal($start_date , $end_date){
 
         // 1. Saldo awal dari kas
         // 2. Saldo awal dari saldo bulan terakhir
 
         $saldo_awal_kas = Kas::getSaldoAwal(
-            $this->start_date, $this->end_date
+            $start_date, $end_date
         );
 
-        $saldo_awal = $saldo_awal_kas + $this->getSaldoAkhirBulanLalu($start_date , $end_date);
+        $saldo_awal = $saldo_awal_kas + self::getSaldoAkhirBulanLalu($start_date , $end_date);
 
         return $saldo_awal;
     }    
@@ -77,13 +77,21 @@ class Transaksi extends Model
 
     public static function getSaldoAkhirBulanLalu($start_date , $end_date){
 
-        $total_pemasukan = self::mine()->pemasukan()->periode($start_date, $end_date)->sum('nominal');
 
-        $total_pengeluaran = self::mine()->Pengeluaran()->periode($start_date, $end_date)->sum('nominal');
+
+        $total_pemasukan = self::mine()->pemasukan()->whereDate('tanggal' , '<' , $start_date)->sum('nominal');
+
+        $total_pengeluaran = self::mine()->Pengeluaran()->whereDate('tanggal' , '<' , $start_date)->sum('nominal');
 
         $saldo = $total_pemasukan - $total_pengeluaran;     
 
         return $saldo;
+    }
+
+
+    public static function getTotalPemasukan($start_date , $end_date){
+
+        return self::mine()->pemasukan()->periode($start_date, $end_date)->sum('nominal');
     }
 
 
@@ -96,11 +104,8 @@ class Transaksi extends Model
     public static function getSaldoAkhir($start_date , $end_date){
 
         $saldo_awal_kas = Kas::getSaldoAwal($start_date, $end_date);
-
         $saldo_bulan_lalu = self::getSaldoAkhirBulanLalu($start_date, $end_date); // saldo akhir + tambah pemasukan
-
-        $pemasukan = self::mine()->pemasukan()->periode($start_date, $end_date)->sum('nominal');
-
+        $pemasukan = self::getTotalPemasukan($start_date, $end_date);
         $total_pemasukan  = $saldo_awal_kas + $saldo_bulan_lalu + $pemasukan;
 
         $pengeluaran = self::getTotalPengeluaran($start_date, $end_date);

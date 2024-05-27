@@ -20,13 +20,23 @@
 
                 @endforeach
             
+                        
+                     
+                <tr></tr>
+                <tr class="py-2">
+                    <th class="py-2">Pemasukan</th>
+                    <th></th>
+                    <th class="text-end underline">{{ number( $pemasukan_bulan_ini) }}</th>
+                </tr>
+
+                
                 <tr></tr>
                 <tr class="py-2">
                     <th class="py-2">Total Pemasukan</th>
                     <th></th>
                     <th class="text-end underline">{{ number( $total_pemasukan) }}</th>
                 </tr>
-                
+
 
             </tbody>
         </table>
