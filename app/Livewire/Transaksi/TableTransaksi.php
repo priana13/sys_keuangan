@@ -8,6 +8,7 @@ use App\Models\Kategori;
 use App\Models\Transaksi;
 use Livewire\WithPagination;
 use App\Exports\ExportPemasukan;
+use App\Exports\ExportTransaksi;
 use Maatwebsite\Excel\Facades\Excel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
@@ -114,7 +115,7 @@ class TableTransaksi extends Component
 
     public function export(){
 
-        return Excel::download(new ExportPemasukan(), 'pemasukan.xlsx');
+        return Excel::download(new ExportTransaksi(), 'transaksi_' . date('d_M_Y H_i_s'). '.xlsx');
     }
 
     public function filterTable($data){
@@ -157,7 +158,11 @@ class TableTransaksi extends Component
             'user_id' => auth()->user()->id,
             'kas_id' => $this->kas_id,
             'metode_bayar' => $metode_bayar->type
-        ]);        
+        ]);     
+        
+        
+        // ubah saldo
+        Kas::getSaldoAkhirKas($this->kas_id);
 
         $this->reset();
 
