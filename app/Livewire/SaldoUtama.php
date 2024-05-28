@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Kas;
+use App\Models\NotaBon;
 use Livewire\Component;
 use App\Models\Transaksi;
 
@@ -23,7 +24,9 @@ class SaldoUtama extends Component
 
         $total_pengeluaran = Transaksi::mine()->pengeluaran()->sum('nominal');
 
-        $this->saldo_saya = $saldo_awal + $total_pemasukan - $total_pengeluaran;
+        $nota_bon = NotaBon::mine()->belumBayar()->sum('nominal');
+
+        $this->saldo_saya = ($saldo_awal + $total_pemasukan) - ($total_pengeluaran + $nota_bon);
 
         return view('livewire.saldo-utama');
     }

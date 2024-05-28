@@ -136,6 +136,10 @@
 
                 @empty
 
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <td colspan="6" class="text-center py-3">Tidak ada Nota Bon Periode ini</td>
+                </tr>
+
                 @endforelse
 
             </tbody>

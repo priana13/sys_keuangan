@@ -49,7 +49,7 @@ class ListNotaBon extends Component
     public function render()
     {
 
-        $nota_bon = NotaBon::orderBy('tanggal','desc');
+        $nota_bon = NotaBon::mine()->orderBy('tanggal','desc');
 
 
         if($this->tanggal_awal && $this->tanggal_akhir){

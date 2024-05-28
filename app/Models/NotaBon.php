@@ -18,6 +18,11 @@ class NotaBon extends Model
         return $query->where('status', 'Sudah Bayar');
     }
 
+    public function scopeMine($query){
+
+        return $query->where('user_id', auth()->user()->id);
+    }
+
     public function scopeBelumBayar($query){
 
         return $query->where('status', 'Belum Bayar');

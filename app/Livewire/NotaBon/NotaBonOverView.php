@@ -18,8 +18,8 @@ class NotaBonOverView extends Component
 
     public function render()
     {
-        $sudah_bayar = NotaBon::sudahBayar()->latest();
-        $belum_bayar = NotaBon::belumBayar()->latest();
+        $sudah_bayar = NotaBon::mine()->sudahBayar()->latest();
+        $belum_bayar = NotaBon::mine()->belumBayar()->latest();
 
         if($this->tanggal_awal && $this->tanggal_akhir){
             
