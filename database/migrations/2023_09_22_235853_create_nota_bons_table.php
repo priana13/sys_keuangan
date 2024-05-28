@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('tanggal');
             $table->string('nama_suplier',100);
-            $table->integer('total');
+            $table->integer('nominal');
             $table->string('status', 20); // Sudah Dibayar , Belum Dibayar
             $table->timestamps();
         });

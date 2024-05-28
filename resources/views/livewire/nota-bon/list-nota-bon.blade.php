@@ -74,7 +74,7 @@
                         Nama
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Total
+                        Nominal
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Status
@@ -99,11 +99,11 @@
                         {{ $row->nama_suplier }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ rupiah($row->total) }}
+                        {{ rupiah($row->nominal) }}
                     </td>
                     <td class="px-6 py-4">                           
                     
-                        <span class="bg-{{ $warna[$row->status] }}-100 text-{{ $warna[$row->status] }}-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-{{ $warna[$row->status] }}-900 dark:text-{{ $warna[$row->status] }}-300">{{ $row->status }}</span>
+                        <span class="bg-{{ $warna[$row->status] }}-300 text-{{ $warna[$row->status] }}-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-{{ $warna[$row->status] }}-900 dark:text-{{ $warna[$row->status] }}-300">{{ $row->status }}</span>
                        
                     </td>
                     <td>
@@ -159,18 +159,12 @@
                     <input wire:model="tanggal" type="date" name="tanggal" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
                     @error('tanggal') <span class="text-red-500">{{ $message }}</span> @enderror
                 </div>
-
+               
                 <div class="my-3">
-                    <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
-                    <input wire:model="keterangan" type="text" name="keterangan" id="keterangan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
-                    @error('keterangan') <span class="text-red-500">{{ $message }}</span> @enderror
-                </div>
+                  <label for="total" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nominal</label>
+                  <input wire:model="nominal" type="number" name="nominal" id="nominal" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nominal">
         
-                <div class="my-3">
-                  <label for="total" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">total</label>
-                  <input wire:model="total" type="number" name="total" id="total" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="total">
-        
-                  @error('total') <span class="text-red-500">{{ $message }}</span> @enderror
+                  @error('nominal') <span class="text-red-500">{{ $message }}</span> @enderror
               </div>   
         
               <div class="my-3">
@@ -179,7 +173,14 @@
         
                   @error('kas_id') <span class="text-red-500">{{ $message }}</span> @enderror
         
-              </div>   
+              </div>  
+              
+              <div class="my-3">
+                    <label for="keterangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
+                    <input wire:model="keterangan" type="text" name="keterangan" id="keterangan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required>
+                    @error('keterangan') <span class="text-red-500">{{ $message }}</span> @enderror
+              </div>
+    
               
               <div class="my-3">
                     <label for="kas_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status Pembayaran</label>

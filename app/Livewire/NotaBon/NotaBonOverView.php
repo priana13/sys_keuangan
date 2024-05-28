@@ -13,7 +13,7 @@ class NotaBonOverView extends Component
     public $status;
 
     protected $listeners = [      
-        'filterTable'
+        'filterTable' , 'updateOverView'
     ];
 
     public function render()
@@ -34,8 +34,8 @@ class NotaBonOverView extends Component
 
         }
 
-        $data['sudah_bayar'] = $sudah_bayar->sum('total');
-        $data['belum_bayar'] = $belum_bayar->sum('total');
+        $data['sudah_bayar'] = $sudah_bayar->sum('nominal');
+        $data['belum_bayar'] = $belum_bayar->sum('nominal');
 
         return view('livewire.nota-bon.nota-bon-over-view' , $data);
     }
@@ -44,5 +44,10 @@ class NotaBonOverView extends Component
        
         $this->tanggal_awal = $data['tanggal_awal'];
         $this->tanggal_akhir = $data['tanggal_akhir'];       
+    }
+
+    public function updateOverView(): void 
+    {
+        // youre code here
     }
 }

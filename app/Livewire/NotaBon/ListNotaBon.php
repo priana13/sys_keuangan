@@ -26,7 +26,7 @@ class ListNotaBon extends Component
     public $tanggal;
     public $keterangan;
     public $suplier;
-    public $total;
+    public $nominal;
     public $status = 'Belum Bayar';
 
     public $nama;
@@ -57,8 +57,8 @@ class ListNotaBon extends Component
             $nota_bon->periode($this->tanggal_awal, $this->tanggal_akhir);
         }
 
-        if($this->filter_status){           
-
+        if($this->filter_status){             
+          
             $nota_bon->where('status', $this->filter_status);
         }
 
@@ -91,6 +91,8 @@ class ListNotaBon extends Component
 
         $record->delete();
 
+        $this->dispatch('updateOverView');
+
         $this->alert('success', "Data Berhasil Dihapus");
     } 
 
@@ -119,7 +121,7 @@ class ListNotaBon extends Component
 
         $this->validate([
             'tanggal' => 'required',
-            'total' => 'required',
+            'nominal' => 'required',
             'keterangan' => 'required',
             'nama' => 'required'            
         ]);
@@ -128,10 +130,12 @@ class ListNotaBon extends Component
             'user_id' => auth()->user()->id,
             'tanggal' => $this->tanggal,
             'keterangan' => $this->keterangan,
-            'total' => $this->total,
+            'nominal' => $this->nominal,
             'nama_suplier' => $this->nama,
             'status' => $this->status
         ]);
+
+        $this->dispatch('updateOverView');
 
         $this->alert('success', "Data Berhasil disimpan");
 
@@ -139,6 +143,8 @@ class ListNotaBon extends Component
     }
 
     public function edit($id){
+
+        $this->reset();
      
         $this->modalType = "update";
 
@@ -146,9 +152,10 @@ class ListNotaBon extends Component
         $this->record = NotaBon::find($id);
 
         $this->tanggal = $this->record->tanggal;
-        $this->total = $this->record->total;        
-        $this->nama_suplier = $this->record->nama_suplier;
-        $this->status = $this->record->status;        
+        $this->nominal = $this->record->nominal;        
+        $this->nama = $this->record->nama_suplier;
+        $this->status = $this->record->status;      
+        $this->keterangan = $this->record->keterangan;  
 
         $this->modalForm = true;
     }
@@ -158,7 +165,7 @@ class ListNotaBon extends Component
         $this->validate([
             'tanggal' => 'required',
             'keterangan' => 'required',
-            'total' => 'required',
+            'nominal' => 'required',
             'nama' => 'required'            
         ]);
 
@@ -166,11 +173,12 @@ class ListNotaBon extends Component
 
         $record->keterangan = $this->keterangan;
         $record->tanggal = $this->tanggal;
-        $record->total = $this->total;       
+        $record->nominal = $this->nominal;       
         $record->nama_suplier = $this->nama;
         $record->status = $this->status;       
         $record->save();
 
+        $this->dispatch('updateOverView');
 
         $this->modalForm = false;
         $this->alert('success', 'Data Berhasil Diupdate');
