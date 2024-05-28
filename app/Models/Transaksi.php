@@ -52,6 +52,8 @@ class Transaksi extends Model
 
     public function scopePeriode($query, $start, $end){
 
+        // dd($start);
+
         return $query->whereDate('tanggal', '>=', $start)->whereDate('tanggal', '<=', $end);
     }
 

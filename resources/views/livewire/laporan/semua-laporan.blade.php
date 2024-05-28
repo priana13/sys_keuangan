@@ -42,7 +42,7 @@
         <div class="">
 
             <h2 class="text-xl sm:text-2xl text-gray-800">Laporan Keuangan Kasir</h2>
-            <h3 class="text-sm sm:text-normal text-gray-600 mt-1">Periode {{ $start }} ~ {{ $end }}</h3>
+            <h3 class="text-sm sm:text-normal text-gray-600 mt-1">Periode {{ date('d-M-Y', strtotime( $start )) }} ~ {{ date('d-M-Y', strtotime( $end )) }}</h3>
             
         </div>
 
@@ -72,7 +72,7 @@
     <div class="mb-8 bg-white px-8 py-6 shadow">
 
         <h2 class="text-xl sm:text-2xl text-gray-800">Laporan Kas</h2>
-        <h3 class="text-sm sm:text-normal text-gray-600 mt-1">Periode {{ $start }} ~ {{ $end }}</h3>
+        <h3 class="text-sm sm:text-normal text-gray-600 mt-1">Periode {{ date('d-M-Y', strtotime( $start )) }} ~ {{ date('d-M-Y', strtotime( $end )) }}</h3>
 
 
         @livewire('laporan.laporan-kas')

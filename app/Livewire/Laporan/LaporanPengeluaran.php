@@ -8,7 +8,7 @@ use Illuminate\Support\Number;
 class LaporanPengeluaran extends Component
 { 
 
-    public $total_pengeluaran;  
+    public $total_pengeluaran = 0;  
 
     public $start_date;
 
@@ -17,6 +17,9 @@ class LaporanPengeluaran extends Component
     public function mount(){
 
         $this->start_date = now()->startOfMonth();
+
+        // dd($this->start_date);
+
         $this->end_date = now();
 
     }

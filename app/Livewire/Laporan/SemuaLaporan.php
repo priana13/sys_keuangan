@@ -28,7 +28,7 @@ class SemuaLaporan extends Component
 
         $this->generateMonthList();
 
-        $this->start = date('Y-01-01');
+        $this->start = date('Y-m-01');
         $this->end = date('Y-m-d');
 
         $this->saldo_akhir = Transaksi::getSaldoAkhir($this->start, $this->end);
