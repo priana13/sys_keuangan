@@ -11,7 +11,7 @@ class HalamanBerlangganan extends Component
 
     public function mount(){
 
-        $this->list_product = Product::get();       
+        $this->list_product = Product::orderBy('id' , 'desc')->get();       
        
     }
 
@@ -25,7 +25,8 @@ class HalamanBerlangganan extends Component
 
         $product = Product::find($id);
 
-        dd($product);
+        // tampilkan pembayaran midtrans
+      
       
     }
 

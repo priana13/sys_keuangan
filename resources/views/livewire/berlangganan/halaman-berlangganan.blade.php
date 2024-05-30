@@ -1,6 +1,10 @@
 <div class="sm:p-12">
     {{-- Care about people's approval and you will be their prisoner. --}}
 
+    <div class="mb-6 text-xl font-bold text-gray-600">
+        <h2>Pilih Opsi berlangganan:</h2>
+    </div>    
+
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
         @foreach($list_product as $product)
 
@@ -9,7 +13,7 @@
 
                 <div class="text-xs line-through">Rp {{ number( $product->harga ) }},-</div>
                 <div class="text-xl font-bold">Rp {{ number( $this->getDiscount( $product->harga, $product->disc ) )  }},-</div>
-                <div>
+                <div class="my-3">
                     <span>{{ $product->nama_produk }}</span>
                 </div>
             

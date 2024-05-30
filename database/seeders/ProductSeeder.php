@@ -17,27 +17,31 @@ class ProductSeeder extends Seeder
             [
                 "id" => 1,
                 "nama" => "1 Tahun",
-                "price_1" => 600000,               
-                "kapasitas" => 12
+                "price_1" => 300000,               
+                "kapasitas" => 12,
+                "disc" => 30
             ],
             [
                 "id" => 2,
                 "nama" => "6 Bulan",
-                "price_1" => 300000,
-                "kapasitas" => 6
+                "price_1" => 150000,
+                "kapasitas" => 6,
+                "disc" => 20
                 
             ],
             [
                 "id" => 3,
                 "nama" => "3 Bulan",
-                "price_1" => 150000,  
-                "kapasitas" => 3              
+                "price_1" => 75000,  
+                "kapasitas" => 3,
+                "disc" => 15          
             ], 
             [
                 "id" => 4,
                 "nama" => "1 Bulan",
-                "price_1" => 50000,   
-                "kapasitas" => 1             
+                "price_1" => 25000,   
+                "kapasitas" => 1,
+                "disc" => 10        
             ]
 
         ];
@@ -48,7 +52,7 @@ class ProductSeeder extends Seeder
                 "nama_produk" => $product["nama"],
                 "harga" => $product['price_1'],
                 "kapasitas" => $product['kapasitas'],
-                "disc" => 10             
+                "disc" => $product['disc']             
             ]);
         }
     }
