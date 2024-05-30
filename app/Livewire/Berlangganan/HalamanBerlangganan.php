@@ -11,7 +11,7 @@ class HalamanBerlangganan extends Component
 
     public function mount(){
 
-        $this->list_product = Product::getProduct();       
+        $this->list_product = Product::get();       
        
     }
 
@@ -26,7 +26,15 @@ class HalamanBerlangganan extends Component
         $product = Product::find($id);
 
         dd($product);
+      
+    }
 
-        dd('test');
+    public function getDiscount($harga , $disc){
+
+        $discount = $harga * $disc / 100;
+
+        $harga_baru = $harga - $discount;
+
+        return $harga_baru;
     }
 }
