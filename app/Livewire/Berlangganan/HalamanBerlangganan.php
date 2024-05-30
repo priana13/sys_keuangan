@@ -2,12 +2,15 @@
 
 namespace App\Livewire\Berlangganan;
 
+use App\Models\Order;
 use App\Models\Product;
 use Livewire\Component;
 
 class HalamanBerlangganan extends Component
 {
     public $list_product;
+
+    public $type;
 
     public function mount(){
 
@@ -25,12 +28,27 @@ class HalamanBerlangganan extends Component
 
         $product = Product::find($id);
 
+        // Buat Order Baru 
+
+          $order = Order::create([            
+            "kode_transaksi" => \uniqid(),
+            "user_id" => auth()->user()->id,
+            "tanggal" => now(),
+            "nominal" => $this->getHargaDiscount($product->harga, $product->disc),
+            "product_id" => $id          
+
+          ]);
+
+          dd($order);
+
         // tampilkan pembayaran midtrans
       
       
     }
 
-    public function getDiscount($harga , $disc){
+
+
+    public function getHargaDiscount($harga , $disc){
 
         $discount = $harga * $disc / 100;
 
