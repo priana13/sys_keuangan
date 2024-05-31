@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Product;
+use App\Models\PaketBerlangganan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ProductSeeder extends Seeder
+class PaketBerlanggananSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -48,7 +48,7 @@ class ProductSeeder extends Seeder
 
         foreach ($products as $product) {
 
-            Product::create([
+            PaketBerlangganan::create([
                 "nama_produk" => $product["nama"],
                 "harga" => $product['price_1'],
                 "kapasitas" => $product['kapasitas'],

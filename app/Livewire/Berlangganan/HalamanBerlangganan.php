@@ -3,7 +3,7 @@
 namespace App\Livewire\Berlangganan;
 
 use App\Models\Order;
-use App\Models\Product;
+use App\Models\PaketBerlangganan;
 use Livewire\Component;
 
 class HalamanBerlangganan extends Component
@@ -16,21 +16,21 @@ class HalamanBerlangganan extends Component
 
     public function mount(){
 
-        $this->list_product = Product::orderBy('id' , 'desc')->get(); 
-        
-        $this->my_order = Order::mine()->pending()->count();
+        $this->list_product = PaketBerlangganan::orderBy('id' , 'desc')->get();        
+       
        
     }
 
     public function render()
     {       
+        $this->my_order = Order::mine()->pending()->count();
 
         return view('livewire.berlangganan.halaman-berlangganan');
     }
 
     public function  BeliSekarang($id){
 
-        $product = Product::find($id);
+        $paket = PaketBerlangganan::find($id);
 
         // Buat Order Baru 
 
@@ -38,12 +38,12 @@ class HalamanBerlangganan extends Component
             "kode_transaksi" => \uniqid(),
             "user_id" => auth()->user()->id,
             "tanggal" => now(),
-            "nominal" => $this->getHargaDiscount($product->harga, $product->disc),
-            "product_id" => $id          
+            "nominal" => $this->getHargaDiscount($paket->harga, $paket->disc),
+            "paket_berlangganan_id" => $id          
 
           ]);
 
-          dd($order);
+        //   dd($order);
 
         // tampilkan pembayaran midtrans
       

@@ -38,7 +38,7 @@
                     </th>
 
                     <td class="px-6 py-4">
-                        {{ $row->product->nama_produk }}  
+                        {{ $row->paket_berlangganan->nama_produk }}  
                      </td>  
 
                      <td class="px-6 py-4">

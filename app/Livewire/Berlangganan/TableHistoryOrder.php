@@ -4,9 +4,11 @@ namespace App\Livewire\Berlangganan;
 
 use App\Models\Order;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class TableHistoryOrder extends Component
 {
+    use WithPagination;
     
     public function render()
     {

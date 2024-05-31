@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->date('tanggal');
             $table->integer('nominal');
-            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('paket_berlangganan_id');
             $table->string('status_transaksi')->default("Pending"); // Pending;Expired;Paid
             $table->string('catatan')->nullable();
             $table->string('snap_token')->nullable(); // khusus midtrans 

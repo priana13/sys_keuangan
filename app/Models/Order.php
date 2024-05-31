@@ -16,9 +16,9 @@ class Order extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function product(){
+    public function paket_berlangganan(){
 
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsTo(PaketBerlangganan::class, 'paket_berlangganan_id');
     }
 
     public function scopePending($query){
