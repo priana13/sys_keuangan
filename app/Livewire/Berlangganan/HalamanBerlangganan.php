@@ -10,11 +10,15 @@ class HalamanBerlangganan extends Component
 {
     public $list_product;
 
-    public $type;
+    public $type = "product";
+
+    public $my_order;
 
     public function mount(){
 
-        $this->list_product = Product::orderBy('id' , 'desc')->get();       
+        $this->list_product = Product::orderBy('id' , 'desc')->get(); 
+        
+        $this->my_order = Order::mine()->pending()->count();
        
     }
 
@@ -55,5 +59,10 @@ class HalamanBerlangganan extends Component
         $harga_baru = $harga - $discount;
 
         return $harga_baru;
+    }
+
+    public function pilihType($type){
+
+        $this->type = $type;
     }
 }

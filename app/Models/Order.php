@@ -15,4 +15,19 @@ class Order extends Model
 
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function product(){
+
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function scopePending($query){
+
+        return $query->where('status_transaksi' , "Pending");
+    }
+
+    public function scopeMine($query){
+
+        return $query->where('user_id' , auth()->user()->id);
+    }
 }
