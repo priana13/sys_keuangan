@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Berlangganan;
 
+use App\Http\Controllers\MidtransController;
 use App\Models\Order;
 use App\Models\PaketBerlangganan;
 use Livewire\Component;
@@ -43,9 +44,7 @@ class HalamanBerlangganan extends Component
 
           ]);
 
-        //   dd($order);
-
-        // tampilkan pembayaran midtrans
+          $snap_token = MidtransController::getSnapToken($order);       
       
       
     }
