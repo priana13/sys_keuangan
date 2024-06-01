@@ -2,10 +2,12 @@
 
 namespace App\Livewire\Berlangganan;
 
-use App\Http\Controllers\MidtransController;
 use App\Models\Order;
-use App\Models\PaketBerlangganan;
 use Livewire\Component;
+use App\Models\Membership;
+use App\Models\PaketBerlangganan;
+use App\Http\Controllers\MidtransController;
+use Illuminate\Support\Facades\Gate;
 
 class HalamanBerlangganan extends Component
 {
@@ -19,13 +21,26 @@ class HalamanBerlangganan extends Component
 
     public function mount(){
 
-        $this->list_product = PaketBerlangganan::orderBy('id' , 'desc')->get();        
-       
-       
+        $this->list_product = PaketBerlangganan::orderBy('id' , 'desc')->get();       
+
+        // if (! Gate::allows('membership')) {          
+
+        //     abort(403);
+        // }
+
+        
+        Membership::tambahAkses(2 , 1);
+        
+        //  dd(auth()->user()->membership()->aktif()->first());
+
     }
 
     public function render()
-    {       
+    {    
+        
+        
+
+
         $this->my_order = Order::mine()->pending()->count();
 
         return view('livewire.berlangganan.halaman-berlangganan');

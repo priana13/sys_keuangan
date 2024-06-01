@@ -18,6 +18,11 @@ class Membership extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function scopeAktif($query){
+
+        return $query->where('status' , 'Aktif');
+    }
+
     
     /**
      * Method tambahAkses
@@ -31,7 +36,7 @@ class Membership extends Model
     {
 
         $hari_ini = Carbon::now(); 
-        $bulan_depan = $hari_ini->addMonth($transaksi->paket_berlangganan->kapasitas);
+        $bulan_depan = $hari_ini->addMonth($kapasitas);
         $invoice_date = $bulan_depan->addDay(-7);
 
         $membership_user = self::where('user_id' , $user_id)->first();

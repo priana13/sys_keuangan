@@ -3,10 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Membership;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -44,6 +45,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function membership(){
+
+        return $this->hasMany(Membership::class, 'user_id');
+    }
+
     public function scopeAdministrator($query){
 
         return $query->where('type', 'Administrator');
@@ -58,4 +64,6 @@ class User extends Authenticatable
 
         return $query->where('type', 'Kasir');
     }
+
+
 }

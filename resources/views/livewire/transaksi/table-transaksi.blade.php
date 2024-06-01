@@ -41,13 +41,16 @@
             </div>           
 
             <div class="mx-1">
-
+                
+                @can('create' , \App\Models\Transaksi::class)
                 <button           
                 wire:click="tambah()"
                 class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-green-800 rounded-lg hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-800 dark:focus:ring-green-900"
                 >
                  Tambah
                 </button>
+
+                @endcan
 
             </div>
 
