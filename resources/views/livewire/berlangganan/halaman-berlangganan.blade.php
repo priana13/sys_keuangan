@@ -100,9 +100,7 @@
     
     <livewire:berlangganan.table-history-order />
 
-    @endif 
-
-    <h1 x-text="$wire.snap_token"></h1>
+    @endif     
 
 
 </div>

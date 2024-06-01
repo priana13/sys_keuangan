@@ -140,20 +140,22 @@ public $transaksi;
             }
           } elseif ($transaction == 'settlement') {
 
-            $transaksi->status_transaksi = 'Paid';            
+            $transaksi->status_transaksi = 'Paid';     
+            
+            Membership::tambahAkses($transaksi->user_id , $transaksi->paket_berlangganan->kapasitas);
 
             // tambahkan langganan sesuai paket yang dipesan
-            $hari_ini = Carbon::now(); 
-            $bulan_depan = $hari_ini->addMonth($transaksi->paket_berlangganan->kapasitas);
-            $invoice_date = $bulan_depan->addDay(-7);
+            // $hari_ini = Carbon::now(); 
+            // $bulan_depan = $hari_ini->addMonth($transaksi->paket_berlangganan->kapasitas);
+            // $invoice_date = $bulan_depan->addDay(-7);
 
-            Membership::create([ 
-                'user_id' => $transaksi->user_id,               
-                'start_date' =>  Carbon::now(),
-                'expired_date' => $bulan_depan,
-                'invoice_date' => $invoice_date,
-                'status' => "Aktif"                
-            ]);        
+            // Membership::create([ 
+            //     'user_id' => $transaksi->user_id,               
+            //     'start_date' =>  Carbon::now(),
+            //     'expired_date' => $bulan_depan,
+            //     'invoice_date' => $invoice_date,
+            //     'status' => "Aktif"                
+            // ]);        
 
             
             /**Kirim notifikasi ke whatsap */
