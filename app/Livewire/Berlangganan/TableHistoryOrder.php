@@ -21,8 +21,11 @@ class TableHistoryOrder extends Component
 
         $order = Order::find($id);
 
-        $order->status_transaksi = "Paid";
-        $order->save();
+
+        $this->dispatch('snapTokenReady' , ['snap_token' => $order->snap_token]); 
+
+        // $order->status_transaksi = "Paid";
+        // $order->save();
 
         // dd($order);
     }
