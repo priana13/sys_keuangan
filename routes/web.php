@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MidtransController;
 use App\Livewire\Dashboard;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
    
 
 });
+
+Route::get('/midtrans/callback' , [MidtransController::class, 'callback']);
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
