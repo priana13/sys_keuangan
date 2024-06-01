@@ -15,6 +15,8 @@ class HalamanBerlangganan extends Component
 
     public $my_order;
 
+    public $snap_token;
+
     public function mount(){
 
         $this->list_product = PaketBerlangganan::orderBy('id' , 'desc')->get();        
@@ -44,8 +46,11 @@ class HalamanBerlangganan extends Component
 
           ]);
 
-          $snap_token = MidtransController::getSnapToken($order);       
-      
+          $this->snap_token = MidtransController::getSnapToken($order);           
+
+           $this->dispatch('snapTokenReady' , ['snap_token' => $this->snap_token]);  
+
+           $this->type = 'history';   
       
     }
 

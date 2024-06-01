@@ -1,4 +1,40 @@
-<div class="sm:px-12 sm:py-6">
+<div class="sm:px-12 sm:py-6"
+
+ x-data="{
+
+    snap_token : $wire.entangle('snap_token').live,
+
+ }"
+
+ x-init="
+
+     $wire.on('snapTokenReady', (event) => {
+
+        snap_token = event[0].snap_token
+
+        snap.pay(snap_token, {
+          // Optional
+          onSuccess: function(result){
+            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+          },
+          // Optional
+          onPending: function(result){
+            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+          },
+          // Optional
+          onError: function(result){
+            /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+          }
+        });
+
+           
+
+    });
+   
+    
+ "
+
+>
 
     <div class="inline-flex rounded-md shadow-sm mb-3" role="group">
         <button  wire:click="pilihType('product')" type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium {{ ($type === 'All') ? 'text-dark bg-blue-700' : 'text-gray-900 bg-white' }} hover:text-gray-50 text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700  dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white active"
@@ -54,12 +90,19 @@
             @endforeach
 
         </div>  
+
+
+
+       
         
 
     @elseif($type == 'history')
     
     <livewire:berlangganan.table-history-order />
 
-    @endif
+    @endif 
+
+    <h1 x-text="$wire.snap_token"></h1>
+
 
 </div>

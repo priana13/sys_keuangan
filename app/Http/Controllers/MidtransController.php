@@ -37,9 +37,9 @@ class MidtransController extends Controller
                 'gross_amount' => $order->nominal,
             ),
             'customer_details' => array(
-                'first_name' => $oder->user->name,
+                'first_name' => $order->user->name,
                 'last_name' => '',
-                'email' => $oder->user->email,                
+                'email' => $order->user->email,                
             ),
         );
 

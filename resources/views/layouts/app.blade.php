@@ -57,6 +57,8 @@
                      
         </div>
 
+        <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{config('services.midtrans.clientKey')}}"></script>
+
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
         <x-livewire-alert::scripts />

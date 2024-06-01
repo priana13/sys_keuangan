@@ -17,7 +17,7 @@
                     </th>
 
                     <th scope="col" class="px-6 py-3">
-                        Nominal
+                        Nominal (Rp)
                     </th>    
                     
                     
@@ -42,7 +42,7 @@
                      </td>  
 
                      <td class="px-6 py-4">
-                        {{ $row->nominal }}  
+                        {{ number($row->nominal) }}  
                      </td>    
 
                      <td class="px-6 py-4">

@@ -12,7 +12,7 @@ class TableHistoryOrder extends Component
     
     public function render()
     {
-        $orders = Order::mine()->paginate(5);      
+        $orders = Order::mine()->orderBy('id' , 'desc')->paginate(5);      
 
         return view('livewire.berlangganan.table-history-order' , compact('orders'));
     }
