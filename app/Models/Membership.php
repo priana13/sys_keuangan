@@ -64,5 +64,13 @@ class Membership extends Model
 
     }
 
+    public static function getSisaHari($expired_date):int 
+    { 
+        $sisa_hari = Carbon::now()->diff($expired_date);
+
+        return $sisa_hari->d;
+
+    }
+
 
 }

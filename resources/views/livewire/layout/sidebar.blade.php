@@ -94,9 +94,7 @@
 
             <li>
                 <a href="/user" wire:navigate class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
-                    </svg> 
+                    <i class="fa-solid fa-user"></i>
                     <span class="flex-1 ml-3 whitespace-nowrap">User</span>
                 </a>
             </li>
@@ -126,9 +124,7 @@
 
              <li>
                 <a href="/berlangganan" wire:navigate class="flex items-center p-2 rounded-lg text-white hover:bg-gray-700 group">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 0 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
-                    </svg>                                            
+                    <i class="fa-solid fa-key"></i>                                          
                       
                     <span class="flex-1 ml-3 whitespace-nowrap">Berlangganan</span>
                 </a>
